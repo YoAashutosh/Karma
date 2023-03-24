@@ -1,0 +1,63 @@
+.project {
+  background: #f3d562;
+}
+.view1 {
+  width: 200px;
+  height: 65px;
+  background: #d9b899;
+  border-radius: 5px;
+  border: none;
+}
+.house3 {
+  background-image: url("https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60");
+  width: 438px;
+  height: 395px;
+  background-size: cover;
+}
+.house4 {
+  background-image: url("https://images.unsplash.com/photo-1575517111478-7f6afd0973db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80");
+  width: 438px;
+  height: 395px;
+  background-size: cover;
+}
+.house5 {
+  background-image: url("https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2365&q=80");
+  width: 438px;
+  height: 395px;
+  background-size: cover;
+}
+.house6 {
+  background-image: url("https://images.unsplash.com/photo-1575517111478-7f6afd0973db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80");
+  width: 438px;
+  height: 395px;
+  background-size: cover;
+}
+.house7 {
+  background-image: url("https://images.unsplash.com/photo-1613977257365-aaae5a9817ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60");
+  width: 438px;
+  height: 395px;
+  background-size: cover;
+}
+.house8 {
+  background-image: url("https://images.unsplash.com/photo-1560026301-88340cf16be7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzZ8fGhvdXNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60");
+  width: 438px;
+  height: 395px;
+  background-size: cover;
+}
+.info {
+  font-size: 30px;
+}
+.upper {
+  background-image: url("https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2148&q=80");
+  width: 600px;
+  height: 380px;
+  background-size: cover;
+}
+.budget {
+  font-weight: 700;
+  font-size: 17px;
+}
+.conf {
+  font-weight: 400;
+  font-size: 17px;
+}

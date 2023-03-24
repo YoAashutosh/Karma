@@ -1,0 +1,65 @@
+.newsImage {
+  background-image: url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bmV3c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60");
+  height: 400px;
+  background-size: cover;
+}
+
+.newsImage1 {
+  background-image: url("https://images.unsplash.com/photo-1503694978374-8a2fa686963a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2369&q=80");
+  height: 320px;
+  background-size: cover;
+}
+.waterImage {
+  background-image: url("https://images.unsplash.com/photo-1541941392960-652036ca567e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2F0ZXIlMjBzdXBwbHl8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60");
+  height: 20vh;
+  background-size: cover;
+}
+.forestImage {
+  background-image: url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGZvcmVzdCUyMG9mZmljZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60");
+  height: 20vh;
+  background-size: cover;
+}
+.medsImage {
+  background-image: url("https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWVkaWNpbmV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60");
+  height: 20vh;
+  background-size: cover;
+}
+.covidImage {
+  background-image: url("https://images.unsplash.com/photo-1605289982774-9a6fef564df8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y292aWR8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60");
+  height: 20vh;
+  background-size: cover;
+}
+.constructionImage {
+  background-image: url("https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y29uc3RydWN0aW9uJTIwc2l0ZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60");
+  height: 20vh;
+  background-size: cover;
+}
+.city {
+  font-size: 19px;
+  font-weight: 400;
+}
+.lady {
+  background-image: url("https://images.unsplash.com/photo-1484399172022-72a90b12e3c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzh8fGdpcmx8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60");
+  height: 70vh;
+  background-size: cover;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}

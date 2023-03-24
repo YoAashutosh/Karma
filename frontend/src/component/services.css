@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.ourService {
+  font-weight: 700;
+  font-size: 22px;
+}
+.serviceWe {
+  font-weight: 700;
+  font-size: 40px;
+}
+.text22 {
+  font-size: 22px;
+  color: #1a1a1a;
+}
+.check {
+  font-weight: 500;
+  font-size: 22px;
+  padding-top: 12px;
+}
+.right {
+  font-size: 24px;
+  padding-top: 12px;
+  color: black;
+}
+.talk {
+  font-weight: 500;
+  width: 147px;
+  height: 56px;
+  border-radius: 4px;
+  border: none;
+  background: #f3d562;
+}
+.chat {
+  font-size: 20px;
+}
+.hand {
+  background-image: url("https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80");
+  width: 350px;
+  height: 352px;
+  border-radius: 4px;
+}
+.money {
+  font-size: 34px;
+  font-weight: 700;
+}
+.arrow {
+  font-size: 48px;
+}

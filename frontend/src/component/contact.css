@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+* {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+}
+.your {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 8px;
+
+  width: 537px;
+  height: 48px;
+
+  background: #ffffff;
+  /* Gry/normal */
+
+  border: 1px solid #767676;
+  border-radius: 4px;
+}
+.your1 {
+  box-sizing: border-box;
+  width: 537px;
+  height: 176px;
+  background: #ffffff;
+  border: 1px solid #767676;
+  border-radius: 4px;
+}
+.submit {
+  width: 251px;
+  height: 53px;
+  font-size: 14px;
+}
+.contact {
+  /* background: #f3d562; */
+}

@@ -1,0 +1,21 @@
+* {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+}
+.navbar {
+  background: #f3d562;
+}
+.signup {
+  width: 100px;
+  height: 48px;
+  background: #ffffff;
+  border-radius: 30px;
+  border: none;
+  color: black;
+}
+.signup:hover {
+  background-color: #000000;
+  color: white;
+}
