@@ -1,0 +1,32 @@
+.productImg {
+  height: 20vh;
+  background-size: cover;
+}
+.productCard {
+  height: 35vh;
+  text-decoration: none;
+  color: black;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.luxury1 {
+  font-weight: 600;
+  font-size: 24px;
+}
+.discount {
+  font-weight: 600;
+  font-size: 18px;
+}
+.p__Price {
+  font-size: 18px;
+}
+.sidebar_products {
+  background-color: aqua;
+}
+.location {
+  font-weight: 600;
+  font-size: 18px;
+}
+.descriptionProject {
+  font-weight: 400;
+  font-size: 18px;
+}

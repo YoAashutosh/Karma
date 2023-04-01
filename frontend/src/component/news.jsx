@@ -1,8 +1,147 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { DataGrid } from "@material-ui/data-grid";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getAdminTenderTable,
+  clearErrors,
+  deleteTenderTable,
+} from "../actions/TenderTableAction";
+import { ToastContainer, toast } from "react-toastify";
 import "./news.css";
-import Table from "react-bootstrap/Table";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { Button } from "@material-ui/core";
 
-const news = () => {
+const News = ({ history }) => {
+  const dispatch = useDispatch();
+
+  const { tenders, error } = useSelector((state) => state.tenders);
+
+  const deleteTenderTableHandler = (id) => {
+    dispatch(deleteTenderTable(id));
+  };
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+
+    dispatch(getAdminTenderTable());
+  }, [dispatch, error, history]);
+
+  const columns = [
+    {
+      field: "name",
+      headerName: "Name",
+      minWidth: 150,
+      flex: 0.5,
+    },
+
+    {
+      field: "description",
+      headerName: "Description",
+      minWidth: 100,
+      flex: 0.5,
+    },
+
+    {
+      field: "publishedDate",
+      headerName: "Date Published",
+      type: "date",
+      minWidth: 150,
+      flex: 0.3,
+    },
+    {
+      field: "submissionDate",
+      headerName: "Date of Submission",
+      type: "date",
+      minWidth: 150,
+      flex: 0.3,
+    },
+
+    {
+      field: "noticeCategory",
+      headerName: "Category",
+      type: "string",
+      minWidth: 150,
+      flex: 0.3,
+    },
+
+    {
+      field: "industry",
+      headerName: "Industry",
+      type: "string",
+      minWidth: 150,
+      flex: 0.3,
+    },
+
+    {
+      field: "productService",
+      headerName: "Service",
+      type: "string",
+      minWidth: 150,
+      flex: 0.3,
+    },
+
+    {
+      field: "newspaper",
+      headerName: "Newspaper",
+      type: "string",
+      minWidth: 150,
+      flex: 0.3,
+    },
+    {
+      field: "noOfDays",
+      headerName: "No. Of Days",
+      type: "string",
+      minWidth: 150,
+      flex: 0.3,
+    },
+    {
+      field: "images",
+      headerName: "Image",
+      type: "file",
+      minWidth: 150,
+      flex: 0.3,
+    },
+    {
+      field: "actions",
+      flex: 0.3,
+      headerName: "Actions",
+      minWidth: 150,
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <Button
+            onClick={() =>
+              deleteTenderTableHandler(params.getValue(params.id, "id"))
+            }
+          >
+            <DeleteIcon />
+          </Button>
+        );
+      },
+    },
+  ];
+
+  const rows = [];
+
+  tenders &&
+    tenders.forEach((item) => {
+      rows.push({
+        name: item.name,
+        description: item.description,
+        publishedDate: item.publishedDate,
+        submissionDate: item.submissionDate,
+        noticeCategory: item.noticeCategory,
+        industry: item.industry,
+        productService: item.productService,
+        newspaper: item.newspaper,
+        noOfDays: item.noOfDays,
+      });
+    });
+
   return (
     <>
       <div>
@@ -76,7 +215,7 @@ const news = () => {
                               <div className="col-10">
                                 <div
                                   class="card ms-2"
-                                  style={{ width: "30rem" }}
+                                  style={{ width: "30rem", height: "100%" }}
                                 >
                                   {" "}
                                   <div className="waterImage"></div>
@@ -101,7 +240,7 @@ const news = () => {
                               <div className="col-10">
                                 <div
                                   class="card ms-5"
-                                  style={{ width: "30rem" }}
+                                  style={{ width: "30rem", height: "100%" }}
                                 >
                                   {" "}
                                   <div className="forestImage"></div>
@@ -126,7 +265,7 @@ const news = () => {
                               <div className="col-10 ms-5">
                                 <div
                                   class="card ms-5"
-                                  style={{ width: "30rem" }}
+                                  style={{ width: "30rem", height: "100%" }}
                                 >
                                   {" "}
                                   <div className="medsImage"></div>
@@ -149,9 +288,8 @@ const news = () => {
                               <div className="col-10">
                                 <div
                                   class="card ms-2"
-                                  style={{ width: "30rem" }}
+                                  style={{ width: "30rem", height: "100%" }}
                                 >
-                                  {" "}
                                   <div className="waterImage"></div>
                                   <div class="card-body">
                                     <h5 class="card-title">
@@ -174,7 +312,7 @@ const news = () => {
                               <div className="col-10">
                                 <div
                                   class="card ms-5"
-                                  style={{ width: "30rem" }}
+                                  style={{ width: "30rem", height: "100%" }}
                                 >
                                   {" "}
                                   <div className="covidImage"></div>
@@ -197,9 +335,8 @@ const news = () => {
                               <div className="col-10 ms-5">
                                 <div
                                   class="card ms-5 mb-5"
-                                  style={{ width: "30rem" }}
+                                  style={{ width: "30rem", height: "100%" }}
                                 >
-                                  {" "}
                                   <div className="constructionImage"></div>
                                   <div class="card-body">
                                     <h5 class="card-title">
@@ -268,36 +405,14 @@ const news = () => {
                     </div>
                     <div className="row justify-content-evenly mt-5">
                       <div className="col-11 mb-5">
-                        <Table striped>
-                          <thead>
-                            <tr>
-                              <th>S.No.</th>
-                              <th>Notice Publisher</th>
-                              <th>Description</th>
-                              <th>Published Date</th>
-                              <th>Last date of Submission</th>
-                              <th>Notice Category</th>
-                              <th>Industry</th>
-                              <th>Product/Service</th>
-                              <th>Newspaper</th>
-                              <th>No of Days Left</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>Example Publisher</td>
-                              <td>Example description</td>
-                              <td>2023-03-23</td>
-                              <td>2023-04-23</td>
-                              <td>Example category</td>
-                              <td>Example industry</td>
-                              <td>Example product/service</td>
-                              <td>Example Newspaper</td>
-                              <td>31</td>
-                            </tr>
-                          </tbody>
-                        </Table>
+                        <DataGrid
+                          rows={rows}
+                          columns={columns}
+                          pageSize={10}
+                          disableSelectionOnClick
+                          className="productListTable"
+                          autoHeight
+                        />
                       </div>
                     </div>
                   </div>
@@ -307,8 +422,19 @@ const news = () => {
           </div>
         </news>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };
 
-export default news;
+export default News;

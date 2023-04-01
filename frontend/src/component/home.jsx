@@ -22,87 +22,88 @@ const Home = () => {
         {/* ######## Start Home Section ######## */}
         <home>
           {/* ######## Start Notice banner ######## */}
-          <div className="slick">
-            <div className="container-fluid p-0">
-              <div className="row">
-                <div className="col-12">
-                  <div className="row mt-5">
-                    <div className="col-12">
-                      <div className="row">
-                        <div className="col-xxl-5 col-xl-6 d-flex justify-content-center">
-                          <h1 className="build_Y">Build Your</h1>
-                        </div>
-                        <div className="col-xxl-3 col-xl-4 me-5 d-flex justify-content-center ">
-                          <img
-                            className="build_first"
-                            src={build}
-                            alt="build"
-                          />
-                        </div>
-                        <div className="col-xxl-3 d-flex justify-content-center">
-                          <h1 className="build_X">Dream</h1>
-                        </div>
+          <div className="container-fluid p-0">
+            <div className="slick row">
+              <div className="col-12">
+                <div className="row mt-5">
+                  <div className="col-12">
+                    <div className="row">
+                      <div className="col-xxl-5 col-xl-6 d-flex justify-content-center">
+                        <h1 className="build_Y">Build Your</h1>
+                      </div>
+                      <div className="col-xxl-3 col-xl-4 me-5 d-flex justify-content-center ">
+                        <img className="build_first" src={build} alt="build" />
+                      </div>
+                      <div className="col-xxl-3 d-flex justify-content-center">
+                        <h1 className="build_X">Dream</h1>
                       </div>
                     </div>
                   </div>
-                  <div className="row mt-5 mb-5">
-                    <div className="col-12">
-                      <div className="row">
-                        <div className="col-xxl-3 col-xl-12 d-flex justify-content-center">
-                          <img
-                            className="build_second d-flex justify-content-center"
-                            src={build2}
-                            alt="build2"
-                          />
-                        </div>
-                        <div className="col-xxl-9 col-xl-12 d-flex justify-content-center align-items-center">
-                          <h1 className="property">Property With Karma</h1>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row my-5">
-                    <div className="fill col-12 d-flex justify-content-center">
-                      <span>
-                        WE FILL YOUR SPACE IN DREAM WITH PASSION AND THOUGHTS,
-                        WE HELP BRING YOUR VISION TO REALITY AND
-                      </span>
-                    </div>
-                    <div className="fill col-12 mt-1 d-flex justify-content-center">
-                      <span>
-                        OVERCOME ANY ENGINEERING AND TECHNICAL CHALLENGE,
-                        WITHOUT DOUBT
-                      </span>
-                    </div>
-                  </div>
-                  <div className="row justify-content- align-items-center">
-                    <div className="col-xxl-3 col-xl-6">
-                      <div className="box">
+                </div>
+                <div className="row mt-5 mb-5">
+                  <div className="col-12">
+                    <div className="row">
+                      <div className="col-xxl-3 col-xl-12 d-flex justify-content-center">
                         <img
-                          className="prop_first d-flex justify-content-center pt-3"
-                          src={prop1}
+                          className="build_second d-flex justify-content-center"
+                          src={build2}
                           alt="build2"
                         />
                       </div>
+                      <div className="col-xxl-9 col-xl-12 d-flex justify-content-center align-items-center">
+                        <h1 className="property">Property With Karma</h1>
+                      </div>
                     </div>
-                    <div className="col-xxl-1 col-sm-2 me-5">
-                      <button class="Hire">Hire Us</button>
+                  </div>
+                </div>
+                <div className="row my-5">
+                  <div className="fill col-12 d-flex justify-content-center">
+                    <span>
+                      WE FILL YOUR SPACE IN DREAM WITH PASSION AND THOUGHTS, WE
+                      HELP BRING YOUR VISION TO REALITY AND
+                    </span>
+                  </div>
+                  <div className="fill col-12 mt-1 d-flex justify-content-center">
+                    <span>
+                      OVERCOME ANY ENGINEERING AND TECHNICAL CHALLENGE, WITHOUT
+                      DOUBT
+                    </span>
+                  </div>
+                </div>
+                <div className="row align-items-center">
+                  <div className="col-xxl-3 col-xl-6">
+                    <div className="box">
+                      <img
+                        className="prop_first d-flex justify-content-center pt-3"
+                        src={prop1}
+                        alt="build2"
+                      />
                     </div>
-                    <div className="col-xxl-7 box-1 ms-5 d-flex mb-5 align-items-center">
+                  </div>
+                  <div className="col-xxl-2 col-sm-2 me-5">
+                    <button class="Hire">Hire Us</button>
+                  </div>
+                  <div className="col-xxl-6  mb-5">
+                    <div className="box-1 d-flex align-items-center">
                       <img className="stair pb-2" src={build2} alt="build2" />
-                      <img className="dozer pb-2" src={dozer} alt="dozer" />
+                      <img
+                        className="dozer ps-2 pb-2"
+                        src={dozer}
+                        alt="dozer"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
           {/* ######## End Notice banner ######## */}
         </home>
         {/* ######## End Home Section ######## */}
         {/* ######## Start Project Section ######## */}
         <project>
-          <div className="projects">
+          <div className="projects row">
             <div className="container-fluid">
               <div className="row">
                 <div className="col-3 my-5 d-flex justify-content-end text-white">
@@ -196,7 +197,7 @@ const Home = () => {
         {/* ######## End Project Section ######## */}
         {/* ######## Start Partner Section ######## */}
         <partner>
-          <div className="container-fluid">
+          <div className="container-fluid p-0">
             <div className="background row">
               <div className="col-12">
                 <div className="row">
@@ -287,7 +288,7 @@ const Home = () => {
         {/* ######## Start Service Section ######## */}
         <service>
           <div className="container-fluid p-0">
-            <div className="service">
+            <div className="service row">
               <div className="col-12">
                 <div className="row">
                   <div className="col-1"></div>
@@ -479,7 +480,7 @@ const Home = () => {
         {/* ######## End Choose Section ######## */}
         {/* ######## Start Start Section ######## */}
         <start>
-          <div className="foot container-fluid">
+          <div className="foot p-0 container-fluid">
             <div className="start row ">
               <div className="col-10 d-flex justify-content-center ms-5 text-white">
                 <div className="row d-flex justify-content-center align-items-center">

@@ -20,7 +20,7 @@ const About = () => {
                   </div>
                   <div className="col-12">
                     <span className="motto">
-                      Karma is helping you to construct through software
+                      Karma is helping you to construct with happiness
                     </span>
                   </div>
                   <div className="col-12  mt-5">
@@ -35,7 +35,9 @@ const About = () => {
                       We're focused on precision and
                     </h2>
                     <h2 className="motto2">productivity</h2>
-                    <div className="under d-flex flex-center col-12"></div>
+                    <div className="col-12 d-flex justify-content-between">
+                      <div className="under "></div>
+                    </div>
                     <div className="col-12 mt-5">
                       <span>
                         Our mission is to be the world’s most trusted field

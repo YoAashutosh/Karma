@@ -70,6 +70,7 @@
   box-sizing: border-box;
   height: 280px;
   background: #f3d562;
+  width: 937px;
   border: 3px solid #ffffff;
   border-radius: 0px 140px 140px 0px;
   transform: rotate(179.24deg);
@@ -82,9 +83,8 @@
   transform: rotate(180deg);
 }
 .stair {
-  width: 600px;
+  width: 590px;
   height: 260px;
-  margin-left: -12px;
   top: 27.35px;
   border-radius: 117.5px 0px 0px 117.5px;
   transform: rotate(180deg);
@@ -234,8 +234,11 @@
 }
 .avatar {
   width: 85px;
+  max-width: 85px !important;
   height: 85px;
+  max-height: 85px !important;
   border-radius: 50%;
+  object-fit: cover !important;
 }
 .subscribe {
   width: 1378px;

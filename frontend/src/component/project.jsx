@@ -17,7 +17,7 @@ const project = () => {
                     <h1>Our Projects</h1>
                   </div>
                   <div className="col-11 my-5 d-flex justify-content-end">
-                    <a className="view" href="/project">
+                    <a className="view" href="/AllProject">
                       View all
                     </a>
                   </div>
@@ -316,7 +316,7 @@ const project = () => {
                   <div className="col-3">
                     <div className="row ms-5">
                       <div className="ms-3 house7 col-12 d-flex justify-content-end text-white">
-                        <Link className="ms-2 text-white" to="">
+                        <Link className="ms-2 text-white" to="project">
                           <i class="mt-2 info fa-solid fa-circle-info"></i>
                         </Link>
                       </div>

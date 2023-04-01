@@ -7,7 +7,11 @@ export default function Nav() {
   if (
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
-    location.pathname === "/admin"
+    location.pathname === "/admin" ||
+    location.pathname === "/form" ||
+    location.pathname === "/admin/product" ||
+    location.pathname === "/calendar" ||
+    location.pathname === "/tenderForm"
   ) {
     return null;
   }

@@ -2,8 +2,56 @@ import React from "react";
 import "./login.css";
 import illustration1 from "./images/build_02.png";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { register, clearErrors } from "../actions/userAction";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const { error, isAuthenticated } = useSelector((state) => state.user);
+
+  const [user, setUser] = useState({
+    name: "",
+
+    email: "",
+
+    password: "",
+  });
+
+  const { email, name, password } = user;
+
+  const registerSubmit = (e) => {
+    e.preventDefault();
+
+    const myForm = new FormData();
+    myForm.set("name", name);
+    myForm.set("email", email);
+    myForm.set("password", password);
+    dispatch(register(myForm));
+  };
+
+  const registerDataChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (isAuthenticated) {
+      history.push("/");
+    }
+  }, [dispatch, error, isAuthenticated, history]);
+
   return (
     <>
       <div>
@@ -28,7 +76,31 @@ const Signup = () => {
                           </div>
                         </div>
                         <div className="col-10 mt-5 d-flex justify-content-center">
-                          <form>
+                          <form
+                            className="signUpForm"
+                            encType="multipart/form-data"
+                            onSubmit={registerSubmit}
+                          >
+                            <div className="mb-3">
+                              <label
+                                for="exampleInputEmail1"
+                                className="form-label"
+                              >
+                                UserName
+                              </label>
+                              <input
+                                type="text"
+                                className=" mb-4 yourL form-control"
+                                id="exampleInputEmail1"
+                                aria-describedby="nameHelp"
+                                required
+                                name="name"
+                                value={name}
+                                placeholder="username"
+                                onChange={registerDataChange}
+                              />
+                            </div>
+
                             <div className="mb-3">
                               <label
                                 for="exampleInputEmail1"
@@ -41,7 +113,11 @@ const Signup = () => {
                                 className=" mb-4 yourL form-control"
                                 id="exampleInputEmail1"
                                 aria-describedby="nameHelp"
+                                required
+                                name="email"
+                                value={email}
                                 placeholder="username@gmail.com"
+                                onChange={registerDataChange}
                               />
                             </div>
                             <div className="mb-3">
@@ -52,10 +128,13 @@ const Signup = () => {
                                 Password
                               </label>
                               <input
-                                type="password"
+                                type="text"
                                 className="yourL form-control"
                                 id="exampleInputPassword1"
+                                name="password"
                                 placeholder="Password"
+                                value={password}
+                                onChange={registerDataChange}
                               />
                             </div>
 
@@ -73,35 +152,15 @@ const Signup = () => {
                                   I agree all terms & conditions of the company.
                                 </label>
                               </div>
-                              <button type="submit" className="sign mt-3 mb-3">
+                              <button
+                                type="submit"
+                                value="Register"
+                                className="sign mt-3 mb-3"
+                              >
                                 Create account
                               </button>
                             </div>
                           </form>
-                        </div>
-                        <div className="col-5 ms-5 d-flex justify-content-end">
-                          <span className=" continue ms-5">
-                            or continue with
-                          </span>
-                        </div>
-                        <div className="col-12">
-                          <div className="row d-flex ms-5 mt-2">
-                            <div className="col-3">
-                              <div className="google d-flex justify-content-center align-items-center">
-                                <i class="gog fa-brands fa-google"></i>
-                              </div>
-                            </div>
-                            <div className="col-3">
-                              <div className="google d-flex justify-content-center align-items-center">
-                                <i class="git fa-brands fa-github"></i>
-                              </div>
-                            </div>
-                            <div className="col-3">
-                              <div className="google d-flex justify-content-center align-items-center">
-                                <i class="fb fa-brands fa-facebook"></i>
-                              </div>
-                            </div>
-                          </div>
                         </div>
                         <div className="col-7 ms-5 d-flex justify-content-end">
                           <span className=" continue ms-3 mt-3">
@@ -129,6 +188,17 @@ const Signup = () => {
           </div>
         </signup>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };

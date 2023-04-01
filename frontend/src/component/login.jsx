@@ -2,8 +2,38 @@ import React from "react";
 import "./login.css";
 import illustration from "./images/construction1.png";
 import { Link } from "react-router-dom";
+import { login, clearErrors } from "../actions/userAction";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const login = () => {
+const Login = ({ history, location }) => {
+  const dispatch = useDispatch();
+
+  const { error, isAuthenticated } = useSelector((state) => state.user);
+
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(loginEmail, loginPassword));
+  };
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (isAuthenticated) {
+      history.push("/");
+    }
+  }, [dispatch, error, isAuthenticated, history]);
+
   return (
     <>
       <div>
@@ -28,7 +58,7 @@ const login = () => {
                           </div>
                         </div>
                         <div className="col-10 mt-5 d-flex justify-content-center">
-                          <form>
+                          <form onSubmit={loginSubmit}>
                             <div className="mb-3">
                               <label
                                 for="exampleInputEmail1"
@@ -40,6 +70,9 @@ const login = () => {
                                 type="email"
                                 className=" mb-4 yourL form-control"
                                 id="exampleInputEmail1"
+                                required
+                                value={loginEmail}
+                                onChange={(e) => setLoginEmail(e.target.value)}
                                 aria-describedby="nameHelp"
                                 placeholder="username@gmail.com"
                               />
@@ -54,6 +87,11 @@ const login = () => {
                               <input
                                 type="password"
                                 className="yourL form-control"
+                                required
+                                value={loginPassword}
+                                onChange={(e) =>
+                                  setLoginPassword(e.target.value)
+                                }
                                 id="exampleInputPassword1"
                                 placeholder="Password"
                               />
@@ -81,30 +119,7 @@ const login = () => {
                             </div>
                           </form>
                         </div>
-                        <div className="col-5 ms-5 d-flex justify-content-end">
-                          <span className=" continue ms-5">
-                            or continue with
-                          </span>
-                        </div>
-                        <div className="col-12">
-                          <div className="row d-flex ms-5 mt-2">
-                            <div className="col-3">
-                              <div className="google d-flex justify-content-center align-items-center">
-                                <i class="gog fa-brands fa-google"></i>
-                              </div>
-                            </div>
-                            <div className="col-3">
-                              <div className="google d-flex justify-content-center align-items-center">
-                                <i class="git fa-brands fa-github"></i>
-                              </div>
-                            </div>
-                            <div className="col-3">
-                              <div className="google d-flex justify-content-center align-items-center">
-                                <i class="fb fa-brands fa-facebook"></i>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+
                         <div className="col-7 ms-5 d-flex justify-content-end">
                           <span className=" continue ms-3 mt-3">
                             Don't Have an account yet?
@@ -131,8 +146,19 @@ const login = () => {
           </div>
         </login>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };
 
-export default login;
+export default Login;
