@@ -34,10 +34,10 @@ export const tendertablesReducer = (state = { tendertables: [] }, action) => {
     case ALL_TENDERTABLE_SUCCESS:
       return {
         loading: false,
-        tendertables: action.payload.tendertables,
+        tendertables: action.payload,
         tendertablesCount: action.payload.tendertablesCount,
         resultPerPage: action.payload.resultPerPage,
-        filteredTenderTablesCount: action.payload.filteredTenderTablesCount,
+        filteredTendersCount: action.payload.filteredTendersCount,
       };
 
     case ADMIN_TENDERTABLE_SUCCESS:
@@ -62,10 +62,7 @@ export const tendertablesReducer = (state = { tendertables: [] }, action) => {
   }
 };
 
-export const tendertableDetailsReducer = (
-  state = { tendertable: {} },
-  action
-) => {
+export const tendertableDetailsReducer = (state = { tendert: {} }, action) => {
   switch (action.type) {
     case TENDERTABLE_DETAILS_REQUEST:
       return {
@@ -75,7 +72,7 @@ export const tendertableDetailsReducer = (
     case TENDERTABLE_DETAILS_SUCCESS:
       return {
         loading: false,
-        tendertable: action.payload,
+        tendert: action.payload,
       };
     case TENDERTABLE_DETAILS_FAIL:
       return {
@@ -92,7 +89,7 @@ export const tendertableDetailsReducer = (
   }
 };
 
-// New TenderTable ----Admin
+// New Tender ----Admin
 export const newTenderTableReducer = (state = { tendertable: {} }, action) => {
   switch (action.type) {
     case NEW_TENDERTABLE_REQUEST:
@@ -127,7 +124,7 @@ export const newTenderTableReducer = (state = { tendertable: {} }, action) => {
   }
 };
 
-// Delete TenderTable
+// Delete Tender
 export const deleteTenderTableReducer = (state = {}, action) => {
   switch (action.type) {
     case DELETE_TENDERTABLE_REQUEST:

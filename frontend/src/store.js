@@ -27,7 +27,7 @@ import {
   tendertableDetailsReducer,
   newTenderTableReducer,
   deleteTenderTableReducer,
-} from "./reducers/tenderTableRedu";
+} from "./reducers/TenderTableRedu";
 import {
   allUsersReducer,
   forgotPasswordReducer,

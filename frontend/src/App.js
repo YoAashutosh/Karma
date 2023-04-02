@@ -30,6 +30,9 @@ import AllUsers from "./component/admin/AllUsers";
 import CreateProduct from "./component/admin/CreateProduct";
 import Equipment from "./component/equipment/Equippment";
 import ProtectedRoute from "./route/ProtectedRoute";
+import Profile from "./component/user/Profile";
+import EditProfile from "./component/user/EditProfile";
+import UpdatePassword from "./component/user/UpdatePassword";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -71,6 +74,9 @@ function App() {
         <Route exact path="/tenderNews" component={TenderNews} />
         <Route exact path="/tenderForm" component={TenderForm} />
         <Route exact path="/product" component={CreateProduct} />
+        <Route exact path="/me" component={Profile} />
+        <Route exact path="/info" component={EditProfile} />
+        <Route exact path="/updatepwd" component={UpdatePassword} />
       </Switch>
       <Footer />
     </Router>

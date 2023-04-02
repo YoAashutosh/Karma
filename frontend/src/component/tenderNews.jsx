@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect } from "react";
-import TenderCard from "./tenderCard/TenderCard";
+import TenderCard from "./tenderCard.js/TenderCard";
 import { useSelector, useDispatch } from "react-redux";
 import { getTender } from "../actions/TenderActions";
 import "./news.css";

@@ -9,7 +9,7 @@ const Tender = ({ history }) => {
   const dispatch = useDispatch();
 
   const { loading, error, success } = useSelector(
-    (state) => state.createTenderTable
+    (state) => state.createProduct
   );
 
   const [name, setName] = useState("");
@@ -106,7 +106,7 @@ const Tender = ({ history }) => {
                   Description
                 </label>
                 <input
-                  type="text"
+                  type="description mb-1"
                   className="your form-control"
                   id="exampleDescription"
                   placeholder="ABC project is a ...."
@@ -146,7 +146,7 @@ const Tender = ({ history }) => {
                   Notice Category
                 </label>
                 <input
-                  type="text"
+                  type="string mb-1"
                   className="your form-control"
                   id="exampleNoticeCategory"
                   placeholder="Tender"
@@ -159,7 +159,7 @@ const Tender = ({ history }) => {
                   Industry
                 </label>
                 <input
-                  type="text"
+                  type="string mb-1"
                   className="your form-control"
                   id="exampleIndustry"
                   placeholder="Industry"
@@ -172,7 +172,7 @@ const Tender = ({ history }) => {
                   Product/Service
                 </label>
                 <input
-                  type="string"
+                  type="string mb-1"
                   className="your form-control"
                   id="exampleProduct"
                   placeholder="Product"
@@ -185,7 +185,7 @@ const Tender = ({ history }) => {
                   Newspaper
                 </label>
                 <input
-                  type="string"
+                  type="string mb-1"
                   className="your form-control"
                   id="exampleNewspaper"
                   placeholder="Newspaper"

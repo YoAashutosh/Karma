@@ -1,4 +1,4 @@
-const TenderTable = require("../models/TenderTableModel.js");
+const TenderTable = require("../models/TenderTable.js");
 const ErrorHandler = require("../utils/ErrorHandler.js");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const Features = require("../utils/Features");
@@ -39,11 +39,11 @@ exports.createTenderTable = catchAsyncErrors(async (req, res, next) => {
 
 // Get All TenderTable (Admin)
 exports.getAdminTenderTables = catchAsyncErrors(async (req, res, next) => {
-  const tenders = await TenderTable.find();
+  const tendertables = await TenderTable.find();
 
   res.status(200).json({
     success: true,
-    tenders,
+    tendertables,
   });
 });
 
@@ -57,10 +57,10 @@ exports.getAllTenderTables = catchAsyncErrors(async (req, res) => {
     .search()
     .filter()
     .pagination(resultPerPage);
-  const tenders = await feature.query;
+  const tenderts = await feature.query;
   res.status(200).json({
     success: true,
-    tenders,
+    tenderts,
     tendersCount,
     resultPerPage,
   });

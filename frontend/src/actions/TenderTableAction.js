@@ -60,7 +60,7 @@ export const getTenderTableDetails = (id) => async (dispatch) => {
 
     dispatch({
       type: TENDERTABLE_DETAILS_SUCCESS,
-      payload: data.tender,
+      payload: data.tenderts,
     });
   } catch (error) {
     dispatch({
@@ -125,15 +125,15 @@ export const createTenderTable = (tendertableData) => async (dispatch) => {
 };
 
 // Get Admin TenderTables -----Admin
-export const getAdminTenderTable = () => async (dispatch) => {
+export const getAdminTenderTables = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_TENDERTABLE_REQUEST });
 
-    const { data } = await axios.get("/api/v2/admin/tendertable");
+    const { data } = await axios.get("/api/v2/admin/tendertables");
 
     dispatch({
       type: ADMIN_TENDERTABLE_SUCCESS,
-      payload: data.tendertable,
+      payload: data.tendertables,
     });
   } catch (error) {
     dispatch({

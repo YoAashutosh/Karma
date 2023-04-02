@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  getAdminTenderTable,
+  getAdminTenderTables,
   clearErrors,
   deleteTenderTable,
 } from "../actions/TenderTableAction";
@@ -14,7 +14,7 @@ import { Button } from "@material-ui/core";
 const News = ({ history }) => {
   const dispatch = useDispatch();
 
-  const { tenders, error } = useSelector((state) => state.tenders);
+  const { tendertables, error } = useSelector((state) => state.tendertables);
 
   const deleteTenderTableHandler = (id) => {
     dispatch(deleteTenderTable(id));
@@ -26,10 +26,16 @@ const News = ({ history }) => {
       dispatch(clearErrors());
     }
 
-    dispatch(getAdminTenderTable());
+    dispatch(getAdminTenderTables());
   }, [dispatch, error, history]);
 
   const columns = [
+    {
+      field: "id",
+      headerName: "id",
+      minWidth: 150,
+      flex: 0.5,
+    },
     {
       field: "name",
       headerName: "Name",
@@ -97,13 +103,7 @@ const News = ({ history }) => {
       minWidth: 150,
       flex: 0.3,
     },
-    {
-      field: "images",
-      headerName: "Image",
-      type: "file",
-      minWidth: 150,
-      flex: 0.3,
-    },
+
     {
       field: "actions",
       flex: 0.3,
@@ -127,9 +127,10 @@ const News = ({ history }) => {
 
   const rows = [];
 
-  tenders &&
-    tenders.forEach((item) => {
+  tendertables &&
+    tendertables.forEach((item) => {
       rows.push({
+        id: item._id,
         name: item.name,
         description: item.description,
         publishedDate: item.publishedDate,

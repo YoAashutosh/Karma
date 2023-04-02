@@ -23,7 +23,7 @@ cloudinary.config({
 })
 
 // create server
-const server = app.listen(4000,() =>{
+const server = app.listen(8000,() =>{
     console.log(`Server is working `)
 })
 
