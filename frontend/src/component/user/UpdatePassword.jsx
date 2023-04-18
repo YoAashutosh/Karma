@@ -4,16 +4,12 @@ import Loading from "../../more/Loader";
 import { useDispatch, useSelector } from "react-redux";
 // import { useAlert } from "react-alert";
 import MetaData from "../../more/Metadata";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import LockIcon from "@material-ui/icons/Lock";
-import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { clearErrors, updatePassword } from "../../actions/userAction";
 import { UPDATE_PASSWORD_RESET } from "../../constans/userContans";
 
 const UpdatePassword = ({ history }) => {
-
-const dispatch = useDispatch();
-//   const alert = useAlert();
+  const dispatch = useDispatch();
+  //   const alert = useAlert();
 
   const { error, isUpdated, loading } = useSelector((state) => state.profile);
 
@@ -57,14 +53,15 @@ const dispatch = useDispatch();
           <MetaData title="Change Password" />
           <div className="updatePasswordContainer">
             <div className="updatePasswordBox">
-              <h2 className="updatePasswordHeading">Update Profile</h2>
+              <h2 className="updatePasswordHeading" style={{ width: "300px" }}>
+                Update Profile
+              </h2>
 
               <form
                 className="updatePasswordForm"
                 onSubmit={updatePasswordSubmit}
               >
-                <div className="loginPassword">
-                  <VpnKeyIcon />
+                <div className="loginPassword d-flex align-items-center">
                   <input
                     type="password"
                     placeholder="Old Password"
@@ -75,7 +72,6 @@ const dispatch = useDispatch();
                 </div>
 
                 <div className="loginPassword">
-                  <LockOpenIcon />
                   <input
                     type="password"
                     placeholder="New Password"
@@ -84,8 +80,7 @@ const dispatch = useDispatch();
                     onChange={(e) => setNewPassword(e.target.value)}
                   />
                 </div>
-                <div className="loginPassword">
-                  <LockIcon />
+                <div className="loginPassword d-flex align-items-center">
                   <input
                     type="password"
                     placeholder="Confirm Password"
@@ -98,6 +93,7 @@ const dispatch = useDispatch();
                   type="submit"
                   value="Change"
                   className="updatePasswordBtn"
+                  style={{ width: "100px" }}
                 />
               </form>
             </div>
@@ -109,4 +105,4 @@ const dispatch = useDispatch();
   );
 };
 
-export default UpdatePassword
+export default UpdatePassword;

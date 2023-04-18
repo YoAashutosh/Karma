@@ -29,6 +29,10 @@ import {
   UPDATE_PASSWORD_RESET,
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PROFILE_FAIL,
+  NEW_NOTE_REQUEST,
+  NEW_NOTE_SUCCESS,
+  NEW_NOTE_RESET,
+  NEW_NOTE_FAIL,
   UPDATE_PROFILE_REQUEST,
   UPDATE_PROFILE_RESET,
   UPDATE_PROFILE_SUCCESS,
@@ -268,6 +272,39 @@ export const forgotPasswordReducer = (state = {}, action) => {
         error: null,
       };
 
+    default:
+      return state;
+  }
+};
+
+export const newNoteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case NEW_NOTE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case NEW_NOTE_SUCCESS:
+      return {
+        loading: false,
+        success: action.payload,
+      };
+    case NEW_NOTE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case NEW_NOTE_RESET:
+      return {
+        ...state,
+        success: false,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
     default:
       return state;
   }

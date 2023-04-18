@@ -1,8 +1,224 @@
 import React from "react";
+import { useEffect } from "react";
+import { DataGrid } from "@material-ui/data-grid";
 import Sidebar from "./sidebar";
 import "./sidebar.css";
+import { Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { Doughnut, Line } from "react-chartjs-2";
+// eslint-disable-next-line
+import Chart from "chart.js/auto";
+import { useDispatch, useSelector } from "react-redux";
+import MetaData from "../more/Metadata";
+import Loading from "../more/Loader";
+import { getAdminProduct } from "../actions/ProductActions.js";
+import { getAllOrders } from "../actions/OrderAction.js";
+import { getAllUsers } from "../actions/userAction.js";
+import AllUsers from "./admin/AllUsers";
+import { getHire } from "../actions/HiringAction";
+import EditIcon from "@material-ui/icons/Edit";
+const Admin = () => {
+  const dispatch = useDispatch();
 
-const admin = () => {
+  const { products, loading } = useSelector((state) => state.products);
+
+  const { orders } = useSelector((state) => state.AllOrders);
+
+  const { users } = useSelector((state) => state.allUsers);
+
+  const { hires } = useSelector((state) => state.hires);
+
+  let outOfStock = 0;
+
+  products &&
+    products.forEach((item) => {
+      if (item.Stock === 0) {
+        outOfStock += 1;
+      }
+    });
+  const userCount = users.filter((user) => user.role === "user").length;
+  useEffect(() => {
+    dispatch(getAdminProduct());
+    dispatch(getAllOrders());
+    dispatch(getAllUsers());
+  }, [dispatch]);
+
+  let totalAmount = 0;
+  orders &&
+    orders.forEach((item) => {
+      totalAmount += item.totalPrice;
+    });
+
+  const lineState = {
+    labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    datasets: [
+      {
+        label: "TOTAL AMOUNT EARNED DAILY",
+        backgroundColor: ["#3BB77E"],
+        hoverBackgroundColor: ["#3BB77E"],
+        data: [0, 1000, 500, 3000, 3500, 5000, 6000, totalAmount],
+      },
+    ],
+  };
+
+  const lineState1 = {
+    labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+    datasets: [
+      {
+        label: "TOTAL AMOUNT EARNED WEEKLY",
+        backgroundColor: ["#3BB77E"],
+        hoverBackgroundColor: ["#3BB77E"],
+        data: [0, 7000, 30000, 25000, totalAmount],
+      },
+    ],
+  };
+
+  const lineState3 = {
+    labels: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
+    datasets: [
+      {
+        label: "TOTAL AMOUNT EARNED MONTHLY",
+        backgroundColor: ["#3BB77E"],
+        hoverBackgroundColor: ["#3BB77E"],
+        data: [
+          0,
+          30000,
+          40000,
+          30000,
+          12000,
+          35000,
+          17000,
+          18000,
+          50000,
+          20000,
+          36000,
+          23000,
+          totalAmount,
+        ],
+      },
+    ],
+  };
+
+  const doughnutState = {
+    labels: ["Out of Stock", "InStock"],
+    datasets: [
+      {
+        backgroundColor: ["#00A6B4", "#6800B4"],
+        hoverBackgroundColor: ["#4B5000", "#35014F"],
+        data: [outOfStock, products.length - outOfStock],
+      },
+    ],
+  };
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
+  const columns = [
+    {
+      field: "name",
+      headerName: "Name",
+      minWidth: 100,
+      flex: 0.25,
+    },
+    {
+      field: "role",
+      headerName: "Role",
+      type: "number",
+      minWidth: 100,
+      flex: 0.3,
+      cellClassName: (params) => {
+        return params.getValue(params.id, "role") === "admin"
+          ? "greenColor"
+          : "redColor";
+      },
+    },
+    {
+      field: "actions",
+      flex: 0.3,
+      headerName: "Actions",
+      minWidth: 150,
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={`/admin/user/${params.getValue(params.id, "id")}`}>
+              <EditIcon />
+            </Link>
+          </>
+        );
+      },
+    },
+  ];
+
+  const rows = [];
+
+  users &&
+    users.forEach((item) => {
+      rows.push({
+        id: item._id,
+        role: item.role,
+        name: item.name,
+      });
+    });
+
+  useEffect(() => {
+    dispatch(getHire());
+  }, [dispatch]);
+
+  const columns1 = [
+    {
+      field: "email",
+      headerName: "Email",
+      minWidth: 100,
+      flex: 0.5,
+    },
+    {
+      field: "name",
+      headerName: "Name",
+      minWidth: 150,
+      flex: 0.5,
+    },
+    {
+      field: "profession",
+      headerName: "Profession",
+      minWidth: 150,
+      flex: 0.5,
+    },
+    {
+      field: "experience",
+      headerName: "Experience",
+      minWidth: 150,
+      flex: 0.5,
+    },
+  ];
+
+  const rows1 = [];
+
+  hires &&
+    hires.forEach((item) => {
+      rows1.push({
+        id: item._id,
+        email: item.email,
+        name: item.name,
+        profession: item.profession,
+        experience: item.experience,
+      });
+    });
+
   return (
     <>
       <div>
@@ -13,33 +229,6 @@ const admin = () => {
             </div>
             <div className="content col-10">
               <div className="row">
-                <div className="col-5">
-                  <div className="row justify-content-evenly">
-                    <div className="mt-5 col-10">
-                      <input
-                        class="search ps-5 py-3 form-control me-2"
-                        type="text"
-                        placeholder="Search..."
-                        aria-label="Search"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="col-6 mt-5 d-flex justify-content-end align-items-center">
-                  <div className="row">
-                    <div className="col-4 ">
-                      <i class="icon fa-solid fa-comment me-2"></i>
-                    </div>
-                    <div className="col-4">
-                      <i class="icon fa-solid fa-bell me-2"></i>
-                    </div>
-                    <div className="col-4">
-                      <i class="icon fa-solid fa-user-tie me-2"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
                 <div className="col-8">
                   <div className="row justify-content-evenly">
                     <div className="col-5">
@@ -48,8 +237,10 @@ const admin = () => {
                           <div className="row">
                             <i class="user mt-3 mb-4 fa-solid fa-users"></i>
                           </div>
-                          <h5 class="card-title mb-3">Employees</h5>
-                          <p class="card-text">Attendance Percentage: 80%</p>
+                          <h5 class="card-title mb-3">Users</h5>
+                          <p class="card-text">
+                            Attendance Percentage: {userCount}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -60,44 +251,45 @@ const admin = () => {
                             <i class="user mt-3 mb-4 fa-solid fa-sack-dollar"></i>
                           </div>
                           <h5 class="card-title mb-3">Earnings</h5>
-                          <p class="card-text">Through Bonus: 65%</p>
+                          <p class="card-text">Through Bonus: {totalAmount}</p>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="row justify-content-evenly">
                     <div className="col-11">
-                      <div class="card mt-5">
+                      <div class="card1 mt-5">
                         <div class="card-body">
                           <h5 class="card-title mt-4 mb-3">Visitor Insights</h5>
+                          <div className="lineChart">
+                            <Line data={lineState} />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="row justify-content-evenly">
                     <div className="col-11">
-                      <div class="card mt-5">
+                      <div class="mt-5">
                         <div class="card-body">
-                          <h5 class="card-title mt-4 mb-3">Recent Activity</h5>
+                          <Link
+                            to="/allhire"
+                            className="text-dark"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <h5 class="card-title mt-5 mb-3">
+                              Recent Hiring Activity
+                            </h5>
+                          </Link>
                           <div className="col-11 mb-5">
-                            <table>
-                              <thead>
-                                <tr>
-                                  <th>#</th>
-                                  <th>Name</th>
-                                  <th>Order Number</th>
-                                  <th>Amount</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>John</td>
-                                  <td>12</td>
-                                  <td>$100</td>
-                                </tr>
-                              </tbody>
-                            </table>
+                            <DataGrid
+                              rows={rows1}
+                              columns={columns1}
+                              pageSize={10}
+                              disableSelectionOnClick
+                              className="productListTable"
+                              autoHeight
+                            />
                           </div>
                         </div>
                       </div>
@@ -105,63 +297,31 @@ const admin = () => {
                   </div>
                 </div>
                 <div className="col-3">
-                  <div className="row justify-content-evenly ">
+                  <div className="row justify-content-evenly">
                     <div className="col-12">
-                      <div class="myCard card mt-5">
-                        <div class="card-body">
-                          <h5 class="card-title mb-3">Employee Record</h5>
-                          <div className="row justify-content-center">
-                            <div className="col-11 mb-5">
-                              <table>
-                                <thead>
-                                  <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Salary</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>01</td>
-                                    <td>Minato</td>
-                                    <td>Paid</td>
-                                  </tr>
-                                  <tr>
-                                    <td>02</td>
-                                    <td>Naruto</td>
-                                    <td>Paid</td>
-                                  </tr>
-                                  <tr>
-                                    <td>03</td>
-                                    <td>Madara</td>
-                                    <td>Paid</td>
-                                  </tr>
-                                  <tr>
-                                    <td>04</td>
-                                    <td>Jiraiya</td>
-                                    <td>Paid</td>
-                                  </tr>
-                                  <tr>
-                                    <td>05</td>
-                                    <td>Kurama</td>
-                                    <td>Paid</td>
-                                  </tr>
-                                  <tr>
-                                    <td>06</td>
-                                    <td>Ronaldo</td>
-                                    <td>Paid</td>
-                                  </tr>
-                                  <tr>
-                                    <td>07</td>
-                                    <td>Mbappe</td>
-                                    <td>Paid</td>
-                                  </tr>
-                                </tbody>
-                              </table>
+                      <Link
+                        to="/allusers"
+                        style={{ textDecoration: "none" }}
+                        className="text-dark"
+                      >
+                        <div class="myCard card mt-5">
+                          <div class="card-body">
+                            <h5 class="card-title mb-3 ms-3">User Record</h5>
+                            <div className="row justify-content-center">
+                              <div className="col-11 mb-5">
+                                <DataGrid
+                                  rows={rows}
+                                  columns={columns}
+                                  pageSize={10}
+                                  disableSelectionOnClick
+                                  className="productListTable"
+                                  autoHeight
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     </div>
                     <div className="col-12">
                       <div class="myCard card mt-5">
@@ -186,8 +346,6 @@ const admin = () => {
                     </div>
                   </div>
                 </div>
-
-                <div className="col-8 bg-dark"></div>
               </div>
             </div>
           </div>
@@ -197,4 +355,4 @@ const admin = () => {
   );
 };
 
-export default admin;
+export default Admin;

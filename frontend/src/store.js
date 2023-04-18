@@ -23,6 +23,12 @@ import {
   tendersReducer,
 } from "./reducers/TenderReducers";
 import {
+  deleteHireReducer,
+  newHireReducer,
+  hireDetailsReducer,
+  hiresReducer,
+} from "./reducers/HiringReducer";
+import {
   tendertablesReducer,
   tendertableDetailsReducer,
   newTenderTableReducer,
@@ -34,6 +40,7 @@ import {
   profileReducer,
   userDetailsReducer,
   userReducer,
+  newNoteReducer,
 } from "./reducers/userReducer";
 import { cartReducer } from "./reducers/CartReducer";
 import { favouriteReducer } from "./reducers/FavouriteReducer";
@@ -45,13 +52,16 @@ import {
   orderReducer,
 } from "./reducers/OrderReducer";
 
+import { notesReducer } from "./reducers/NoteReducer";
 const reducer = combineReducers({
   products: productsReducer,
   productDetails: productDetailsReducer,
   projects: projectsReducer,
   projectDetails: projectDetailsReducer,
   tenders: tendersReducer,
+  hires: hiresReducer,
   tenderDetails: tenderDetailsReducer,
+  hireDetails: hireDetailsReducer,
 
   tendertables: tendertablesReducer,
   tendertableDetails: tendertableDetailsReducer,
@@ -69,6 +79,8 @@ const reducer = combineReducers({
   deleteProject: deleteProjectReducer,
   createTender: newTenderReducer,
   deleteTender: deleteTenderReducer,
+  deleteHire: deleteHireReducer,
+  createHire: newHireReducer,
   createTenderTable: newTenderTableReducer,
   deleteTenderTable: deleteTenderTableReducer,
   AllOrders: allOrdersReducer,
@@ -78,30 +90,15 @@ const reducer = combineReducers({
   deleteReview: deleteReviewReducer,
   productReviews: productReviewsReducer,
   forgotPassword: forgotPasswordReducer,
+  notes: notesReducer,
+  newNote: newNoteReducer,
 });
-
-let initialState = {
-  cart: {
-    cartItems: localStorage.getItem("cartItems")
-      ? JSON.parse(localStorage.getItem("cartItems"))
-      : [],
-
-    shippingInfo: localStorage.getItem("shippingInfo")
-      ? JSON.parse(localStorage.getItem("shippingInfo"))
-      : {},
-  },
-  favourite: {
-    favouriteItems: localStorage.getItem("favouriteItems")
-      ? JSON.parse(localStorage.getItem("favouriteItems"))
-      : [],
-  },
-};
 
 const middleWare = [thunk];
 
 const store = createStore(
   reducer,
-  initialState,
+
   composeWithDevTools(applyMiddleware(...middleWare))
 );
 

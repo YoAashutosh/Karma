@@ -96,9 +96,14 @@ const Login = ({ history, location }) => {
                                 placeholder="Password"
                               />
                             </div>
-                            <div id="PasswordHelp" className=" mb-3 form-text">
-                              Forgot Password?
-                            </div>
+                            <Link to="/password/forgot">
+                              <div
+                                id="PasswordHelp"
+                                className=" mb-3 form-text"
+                              >
+                                Forgot Password?
+                              </div>
+                            </Link>
                             <div className="text-start">
                               <div className="mb-3 form-check">
                                 <input
@@ -130,7 +135,7 @@ const Login = ({ history, location }) => {
                         </div>
                       </div>
                       <div className="col-6">
-                        <div className="col-6">
+                        <div className="col-8">
                           <img
                             className="illus mt-4 d-flex justify-content-between"
                             src={illustration}

@@ -28,7 +28,9 @@ const order = require("./routes/OrderRoute");
 const payment = require("./routes/PaymentRoute");
 const cart = require("./routes/WishListRoute");
 const tendertable = require("./routes/TenderTableR");
-
+const hire = require("./routes/HiringRoutes");
+const note = require("./routes/NotesRoute");
+app.use("/api/v2", note);
 app.use("/api/v2", product);
 
 app.use("/api/v2", project);
@@ -44,6 +46,8 @@ app.use("/api/v2", payment);
 app.use("/api/v2", cart);
 
 app.use("/api/v2", tendertable);
+
+app.use("/api/v2", hire);
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 

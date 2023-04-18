@@ -1,7 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./EditProfile.css";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import FaceIcon from "@material-ui/icons/Face";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, loadUser, updateProfile } from "../../actions/userAction";
 import Loading from "../../more/Loader";
@@ -87,7 +85,6 @@ const EditProfile = ({ history }) => {
                 onSubmit={updateProfileSubmit}
               >
                 <div className="updateProfileName">
-                  <FaceIcon />
                   <input
                     type="text"
                     placeholder="Name"
@@ -98,7 +95,6 @@ const EditProfile = ({ history }) => {
                   />
                 </div>
                 <div className="updateProfileEmail">
-                  <MailOutlineIcon />
                   <input
                     type="email"
                     placeholder="Email"

@@ -60,7 +60,7 @@ const Signup = () => {
             <div className="login row">
               <div className="col-12">
                 <div className="row justify-content-evenly mt-5">
-                  <div className="myLogin mt-5">
+                  <div className="myLogin mb-5 mt-5">
                     <div className="row">
                       <div className="col-6">
                         <div className="col-8">
@@ -75,9 +75,10 @@ const Signup = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-10 mt-5 d-flex justify-content-center">
+                        <div className="col-10 d-flex justify-content-center">
                           <form
                             className="signUpForm"
+                            style={{ borderRadius: "30px" }}
                             encType="multipart/form-data"
                             onSubmit={registerSubmit}
                           >
@@ -172,9 +173,9 @@ const Signup = () => {
                         </div>
                       </div>
                       <div className="col-6">
-                        <div className="col-6">
+                        <div className="col-8">
                           <img
-                            className="illus mt-4 d-flex justify-content-between"
+                            className="illus mt-5 d-flex justify-content-between"
                             src={illustration1}
                             alt="illustration1"
                           />

@@ -14,8 +14,11 @@ import building from "./images/building1.jpg";
 import building1 from "./images/building2.jpg";
 import hireUs from "./images/hire.jpg";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Home = () => {
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   return (
     <>
       <div>
@@ -43,14 +46,14 @@ const Home = () => {
                 <div className="row mt-5 mb-5">
                   <div className="col-12">
                     <div className="row">
-                      <div className="col-xxl-3 col-xl-12 d-flex justify-content-center">
+                      <div className="col-xxl-3 col-xl-12 d-flex justify-content-center ms-4">
                         <img
-                          className="build_second d-flex justify-content-center"
+                          className="build_second d-flex justify-content-center ms-5"
                           src={build2}
                           alt="build2"
                         />
                       </div>
-                      <div className="col-xxl-9 col-xl-12 d-flex justify-content-center align-items-center">
+                      <div className="col-xxl-8 col-xl-12 d-flex justify-content-center align-items-center">
                         <h1 className="property">Property With Karma</h1>
                       </div>
                     </div>
@@ -80,17 +83,23 @@ const Home = () => {
                       />
                     </div>
                   </div>
+
                   <div className="col-xxl-2 col-sm-2 me-5">
-                    <button class="Hire">Hire Us</button>
+                    <Link to="/allhire">
+                      <button class="Hire1">Hire Us</button>
+                    </Link>
                   </div>
+
                   <div className="col-xxl-6  mb-5">
                     <div className="box-1 d-flex align-items-center">
                       <img className="stair pb-2" src={build2} alt="build2" />
-                      <img
-                        className="dozer ps-2 pb-2"
-                        src={dozer}
-                        alt="dozer"
-                      />
+                      <Link to="/equipment">
+                        <img
+                          className="dozer ps-2 pb-2"
+                          src={dozer}
+                          alt="dozer"
+                        />
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -100,6 +109,7 @@ const Home = () => {
 
           {/* ######## End Notice banner ######## */}
         </home>
+
         {/* ######## End Home Section ######## */}
         {/* ######## Start Project Section ######## */}
         <project>
@@ -295,7 +305,11 @@ const Home = () => {
                   <div className="col-11">
                     <div className="row text-white mt-5">
                       <div className="col-11 d-flex justify-content-end">
-                        <strong>Scroll for more</strong>
+                        <Link to="/allhire" style={{ textDecoration: "none" }}>
+                          <strong className="text-white">
+                            Scroll for more
+                          </strong>
+                        </Link>
                       </div>
                       <div className="col-12">
                         <h1 className="our">OUR</h1>

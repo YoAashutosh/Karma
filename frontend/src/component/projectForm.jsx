@@ -6,11 +6,11 @@ import { ToastContainer, toast } from "react-toastify";
 import Sidebar from "./sidebar";
 import { Button } from "@material-ui/core";
 
-const CreateProject = ({ history }) => {
+const ProjectForm = ({ history }) => {
   const dispatch = useDispatch();
 
   const { loading, error, success } = useSelector(
-    (state) => state.createProduct
+    (state) => state.createProject
   );
 
   const [name, setName] = useState("");
@@ -26,8 +26,8 @@ const CreateProject = ({ history }) => {
     }
 
     if (success) {
-      toast.success("Product Created Successfully");
-      history.push("/dashboard");
+      toast.success("Equipment Created Successfully");
+      history.push("/admin");
       dispatch({ type: NEW_PROJECT_RESET });
     }
   }, [dispatch, error, history, success]);
@@ -79,13 +79,13 @@ const CreateProject = ({ history }) => {
               onSubmit={createProjectSubmitHandler}
             >
               <div>
-                <label for="exampleInputEqName" className="form-label">
-                  Equipment Name
+                <label for="exampleInputProjectName" className="form-label">
+                  Project Name
                 </label>
                 <input
                   type="text"
                   className="your form-control my-3"
-                  placeholder="Equipment Name"
+                  placeholder="Project Name"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -93,10 +93,10 @@ const CreateProject = ({ history }) => {
               </div>
               <div className="mb-3">
                 <label for="exampleInputDescription" className="form-label">
-                  Equipment Description
+                  Project Description
                 </label>
                 <input
-                  placeholder="Equipment Description"
+                  placeholder="Project Description"
                   className="your form-control mb-3"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
@@ -107,7 +107,7 @@ const CreateProject = ({ history }) => {
                   Location
                 </label>
                 <input
-                  placeholder="Your Location"
+                  placeholder="Project Location"
                   className="your form-control mb-3"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
@@ -131,14 +131,17 @@ const CreateProject = ({ history }) => {
                   ))}
                 </div>
               </div>
-              <Button
-                id="createProductBtn"
-                type="submit"
-                className="mt-4"
-                disabled={loading ? true : false}
-              >
-                Create
-              </Button>
+              <div className="d-flex justify-content-center">
+                <Button
+                  id="createProductBtn"
+                  type="submit"
+                  className="mt-4"
+                  style={{ width: "100px" }}
+                  disabled={loading ? true : false}
+                >
+                  Create
+                </Button>
+              </div>
             </form>
           </div>
         </div>
@@ -158,4 +161,4 @@ const CreateProject = ({ history }) => {
   );
 };
 
-export default CreateProject;
+export default ProjectForm;

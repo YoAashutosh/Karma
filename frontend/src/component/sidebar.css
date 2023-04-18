@@ -9,7 +9,7 @@
 }
 .sidebar {
   background: #f3d562;
-  height: 100vh;
+  height: 120vh;
 }
 .content {
   background: #f6faff;
@@ -23,6 +23,7 @@
 .card {
   height: 20vh;
 }
+
 .user {
   font-size: 24px;
 }

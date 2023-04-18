@@ -6,9 +6,9 @@ import Backdrop from "@material-ui/core/Backdrop";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
-import Support from "@material-ui/icons/ReportProblem";
-
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import NotesIcon from "@mui/icons-material/Notes";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import HomeIcon from "@material-ui/icons/Home";
 import { useDispatch } from "react-redux";
 import { logout } from "../actions/userAction";
@@ -30,13 +30,18 @@ const UserData = ({ user }) => {
 
   const options = [
     { icon: <HomeIcon />, name: "Home", func: home },
-
     { icon: <PersonIcon />, name: "Profile", func: account },
-    { icon: <Support />, name: "Report us", func: report },
+    { icon: <CalendarMonthIcon />, name: "Calendar", func: calendar },
+    { icon: <NotesIcon />, name: "Notes", func: report },
     { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
   ];
 
   if (user.role === "admin") {
+    options.unshift({
+      icon: <NewspaperIcon />,
+      name: "Newspaper",
+      func: news,
+    });
     options.unshift({
       icon: <DashboardIcon />,
       name: "Dashboard",
@@ -48,6 +53,11 @@ const UserData = ({ user }) => {
       icon: <DashboardIcon />,
       name: "Dashboard",
       func: dashboard,
+    });
+    options.unshift({
+      icon: <NewspaperIcon />,
+      name: "Newspaper",
+      func: news,
     });
   }
 
@@ -61,14 +71,21 @@ const UserData = ({ user }) => {
   function account() {
     history.push("/me");
   }
-
+  function calendar() {
+    history.push("/calendar");
+  }
   function report() {
-    history.push("/support");
+    history.push("/NotesList");
+  }
+
+  function news() {
+    history.push("/tenderForm");
   }
 
   function logoutUser() {
     dispatch(logout());
-    toast.success("Logout Successfully");
+    toast.success("Logout Successfully.");
+    history.push("/login");
   }
 
   return (

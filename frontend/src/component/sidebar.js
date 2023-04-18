@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./sidebar.css";
+import { Link } from "react-router-dom";
+import { logout } from "../actions/userAction";
+import { toast } from "react-toastify";
 
-const sidebar = () => {
+const Sidebar = ({ history }) => {
+  const { user, loading, isAuthenticated } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (isAuthenticated === false) {
+      history.push("/");
+    }
+  }, [history, isAuthenticated]);
+
+  const dispatch = useDispatch();
+
+  function logoutUser() {
+    dispatch(logout());
+    toast.success("Logout Successfully");
+    history.push("/");
+  }
   return (
     <>
       <div>
@@ -12,7 +31,12 @@ const sidebar = () => {
               <div className="sidebar col-12">
                 <div className="row mt-5">
                   <div className="mb-3 col-12 text-center">
-                    <h2>Karma</h2>
+                    <Link
+                      to="/"
+                      style={{ textDecoration: "none", color: "black" }}
+                    >
+                      <h2>Karma</h2>
+                    </Link>
                   </div>
 
                   <NavLink
@@ -34,7 +58,7 @@ const sidebar = () => {
                   <NavLink
                     className="dash mt-4 mb-4"
                     aria-current="page"
-                    to="/project"
+                    to="/projectForm"
                   >
                     <i class="dashHouse ms-4 me-4 bi bi-kanban-fill"></i>
                     Project
@@ -42,15 +66,32 @@ const sidebar = () => {
                   <NavLink
                     className="dash mt-4 mb-3"
                     aria-current="page"
-                    to="/equipment"
+                    to="/admin/product"
                   >
                     <i class="dashHouse ms-4 me-3 fa-solid fa-gear"></i>
-                    Equipments
+                    Equipment
                   </NavLink>
                   <NavLink
                     className="dash mt-4 mb-3"
                     aria-current="page"
-                    to="/logout"
+                    to="/tender"
+                  >
+                    <i class="dashHouse ms-4 me-3 fa-solid fa-table"></i>
+                    Tender Table
+                  </NavLink>
+                  <NavLink
+                    className="dash mt-4 mb-3"
+                    aria-current="page"
+                    to="/Allproject"
+                  >
+                    <i class="dashHouse ms-4 me-3 fa-solid fa-table"></i>
+                    All Project
+                  </NavLink>
+                  <NavLink
+                    onClick={logoutUser}
+                    className="dash mt-3 mb-3"
+                    aria-current="page"
+                    to="/"
                   >
                     <i class="dashHouse mt-4 ms-4 me-3 fa-solid fa-arrow-right-from-bracket"></i>
                     Logout
@@ -65,4 +106,4 @@ const sidebar = () => {
   );
 };
 
-export default sidebar;
+export default Sidebar;

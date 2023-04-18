@@ -54,15 +54,16 @@
   margin-left: -20px;
   border-radius: 0px 140px 140px 0px;
 }
-.Hire {
+.Hire1 {
   margin-left: 20px;
   width: 125px;
   height: 58px;
   background: #ffffff;
+  color: #000000;
   border-radius: 30px;
   border: none;
 }
-.Hire:hover {
+.Hire1:hover {
   background-color: #000000;
   color: white;
 }
@@ -173,7 +174,7 @@
   font-size: 80px;
 }
 .our {
-  font-style: normal;
+  margin: 0em;
   font-weight: 600;
   font-size: 96px;
 }

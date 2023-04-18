@@ -31,19 +31,7 @@ const Service = () => {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col-5">
-                    <div className="row justify-content-end">
-                      <div className="col-4">
-                        <button className="talk mt-5">
-                          Let's Talk
-                          <span>
-                            <i class="chat ms-3 fa-regular fa-comment"></i>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-1"></div>
+                  <div className="col-5"></div>
                   <div className="col-6">
                     <div className="row justify-content-start">
                       <div className="col-4 d-flex">
@@ -163,16 +151,6 @@ const Service = () => {
                     <div className="ms-5 hand"></div>
                   </div>
                   <div className="col-6"></div>
-                  <div className="col-3 mt-4 text-end">
-                    <span>
-                      <i class="arrow fa-solid fa-circle-left"></i>
-                    </span>
-                  </div>
-                  <div className="col-3 mt-4">
-                    <span>
-                      <i class="arrow fa-solid fa-circle-right"></i>
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>

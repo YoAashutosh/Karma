@@ -26,7 +26,7 @@ const CreateTender = ({ history }) => {
     }
 
     if (success) {
-      toast.success("Product Created Successfully");
+      toast.success("Tender Created Successfully");
       history.push("/dashboard");
       dispatch({ type: NEW_TENDER_RESET });
     }
@@ -131,14 +131,17 @@ const CreateTender = ({ history }) => {
                   ))}
                 </div>
               </div>
-              <Button
-                id="createProductBtn"
-                type="submit"
-                className="mt-4"
-                disabled={loading ? true : false}
-              >
-                Create
-              </Button>
+              <div className="d-flex justify-content-center">
+                <Button
+                  id="createProductBtn"
+                  type="submit"
+                  className="mt-4"
+                  style={{ width: "100px" }}
+                  disabled={loading ? true : false}
+                >
+                  Create
+                </Button>
+              </div>
             </form>
           </div>
         </div>

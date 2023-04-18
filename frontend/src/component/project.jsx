@@ -325,7 +325,7 @@ const project = () => {
                   <div className="col-3">
                     <div className="row ms-5">
                       <div className="ms-3 house8 col-12 d-flex justify-content-end text-white">
-                        <Link className="ms-2 text-white" to="">
+                        <Link className="ms-2 text-white" to="/allprojectrd">
                           <i class="mt-2 info fa-solid fa-circle-info"></i>
                         </Link>
                       </div>

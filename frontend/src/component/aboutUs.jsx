@@ -24,7 +24,14 @@ const About = () => {
                     </span>
                   </div>
                   <div className="col-12  mt-5">
-                    <button className="learn">LEARN MORE</button>
+                    <button className="learn">
+                      <a
+                        href="https://safetyculture.com/topics/construction-management/"
+                        style={{ textDecoration: "none" }}
+                      >
+                        LEARN MORE
+                      </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -165,108 +172,33 @@ const About = () => {
               </div>
               <div className="col-12">
                 <div className="row">
-                  <div className="col-12 text-center mt-5">
-                    <h1>Leadership team</h1>
-                    <div className="row">
-                      <div className="profile col-4 text-center mt-5">
-                        <img
-                          className="avatar ms-3"
-                          src={avatar1}
-                          alt="avatar1"
-                        />
-                        <div className="col-6 ms-5 text-end">
-                          <div className="row">
-                            <div className="col-12 ms-3">
-                              <span className="angelina">Angelina Jolie</span>
-                            </div>
-                            <div className="col-12">
-                              <span className="founder">Founder Karma</span>
-                            </div>
+                  <div class="leadership-team">
+                    <h2 class="section-title">Leadership Team</h2>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="profile-card ms-5">
+                          <img class="avatar" src={avatar1} alt="avatar1" />
+                          <div class="profile-details">
+                            <h3 class="name">Angelina Jolie</h3>
+                            <span class="role">Founder, Karma</span>
                           </div>
                         </div>
                       </div>
-                      <div className="profile col-4 text-center mt-5">
-                        <img
-                          className="avatar ms-3"
-                          src={avatar1}
-                          alt="avatar1"
-                        />
-                        <div className="col-6 ms-5 text-end">
-                          <div className="row">
-                            <div className="col-12 ms-3">
-                              <span className="angelina">Angelina Jolie</span>
-                            </div>
-                            <div className="col-12">
-                              <span className="founder">Founder Karma</span>
-                            </div>
+                      <div class="col-md-4">
+                        <div class="profile-card">
+                          <img class="avatar" src={avatar1} alt="avatar2" />
+                          <div class="profile-details">
+                            <h3 class="name">Brad Pitt</h3>
+                            <span class="role">CEO, Karma</span>
                           </div>
                         </div>
                       </div>
-                      <div className="profile col-4 text-center mt-5">
-                        <img
-                          className="avatar ms-3"
-                          src={avatar1}
-                          alt="avatar1"
-                        />
-                        <div className="col-6 ms-5 text-end">
-                          <div className="row">
-                            <div className="col-12 ms-3">
-                              <span className="angelina">Angelina Jolie</span>
-                            </div>
-                            <div className="col-12">
-                              <span className="founder">Founder Karma</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="profile col-4 text-center mt-5">
-                        <img
-                          className="avatar ms-3"
-                          src={avatar1}
-                          alt="avatar1"
-                        />
-                        <div className="col-6 ms-5 text-end">
-                          <div className="row">
-                            <div className="col-12 ms-3">
-                              <span className="angelina">Angelina Jolie</span>
-                            </div>
-                            <div className="col-12">
-                              <span className="founder">Founder Karma</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="profile col-4 text-center mt-5">
-                        <img
-                          className="avatar ms-3"
-                          src={avatar1}
-                          alt="avatar1"
-                        />
-                        <div className="col-6 ms-5 text-end">
-                          <div className="row">
-                            <div className="col-12 ms-3">
-                              <span className="angelina">Angelina Jolie</span>
-                            </div>
-                            <div className="col-12">
-                              <span className="founder">Founder Karma</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="profile col-4 text-center mt-5">
-                        <img
-                          className="avatar ms-3"
-                          src={avatar1}
-                          alt="avatar1"
-                        />
-                        <div className="col-6 ms-5 text-end">
-                          <div className="row">
-                            <div className="col-12 ms-3">
-                              <span className="angelina">Angelina Jolie</span>
-                            </div>
-                            <div className="col-12">
-                              <span className="founder">Founder Karma</span>
-                            </div>
+                      <div class="col-md-4">
+                        <div class="profile-card me-5">
+                          <img class="avatar" src={avatar1} alt="avatar3" />
+                          <div class="profile-details">
+                            <h3 class="name">George Clooney</h3>
+                            <span class="role">CTO, Karma</span>
                           </div>
                         </div>
                       </div>

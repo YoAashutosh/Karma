@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.5.0",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@material-ui/core": "^4.12.3",
     "@material-ui/data-grid": "^4.0.0-alpha.37",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.11.15",
     "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.26.0",
     "@testing-library/jest-dom": "^5.16.2",
@@ -37,6 +40,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "source-map-loader": "^4.0.1",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4",
     "webfontloader": "^1.6.28"
   },
@@ -63,6 +67,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:8000"
+  }
 }

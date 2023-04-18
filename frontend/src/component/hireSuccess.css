@@ -1,0 +1,65 @@
+.orderSuccess {
+  margin: auto;
+  text-align: center;
+  padding: 10vmax;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.orderSuccess > svg {
+  font-size: 7vmax;
+  color: #3bb77e;
+}
+.orderSuccess > p {
+  font-size: 2vmax;
+}
+.orderSuccess > a {
+  color: white;
+  border: none;
+  padding: 1vmax 3vmax;
+  cursor: pointer;
+  font: 400 1vmax "Poppins";
+  text-decoration: none;
+  margin: 2vmax;
+}
+
+@media screen and (max-width: 600px) {
+  .orderSuccess > a {
+    padding: 3vw 6vw;
+    font: 400 4vw "Poppins";
+    margin: 2vmax;
+  }
+
+  .orderSuccess > svg {
+    font-size: 20vw;
+  }
+  .orderSuccess > p {
+    margin: 2vmax;
+    font-size: 5vw;
+  }
+}
+.orderSuccess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.successText {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.hireMoreBtn {
+  margin-top: 40px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #f3d562;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}

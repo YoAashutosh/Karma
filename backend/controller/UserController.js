@@ -9,7 +9,7 @@ const cloudinary = require("cloudinary");
 // Register user
 exports.createUser = catchAsyncErrors(async (req, res, next) => {
   try {
-    const { name, email, password} = req.body;
+    const { name, email, password } = req.body;
 
     let user = await User.findOne({ email });
     if (user) {
@@ -29,9 +29,8 @@ exports.createUser = catchAsyncErrors(async (req, res, next) => {
       password,
       // avatar: { public_id: myCloud.public_id, url: myCloud.secure_url },
     });
-    
-    sendToken(user, 201, res);
 
+    sendToken(user, 201, res);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -42,28 +41,33 @@ exports.createUser = catchAsyncErrors(async (req, res, next) => {
 
 // Login User
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
+  console.log("jfjffj");
   const { email, password } = req.body;
 
-  if (!email || !password) {
-    return next(new ErrorHandler("Please enter the email & password", 400));
+  try {
+    if (!email || !password) {
+      return next(new ErrorHandler("Please enter the email & password", 400));
+    }
+
+    const user = await User.findOne({ email }).select("+password");
+
+    if (!user) {
+      return next(
+        new ErrorHandler("User is not find with this email & password", 401)
+      );
+    }
+    const isPasswordMatched = await user.comparePassword(password);
+
+    if (!isPasswordMatched) {
+      return next(
+        new ErrorHandler("User is not find with this email & password", 401)
+      );
+    }
+
+    sendToken(user, 201, res);
+  } catch (err) {
+    console.log(err);
   }
-
-  const user = await User.findOne({ email }).select("+password");
-
-  if (!user) {
-    return next(
-      new ErrorHandler("User is not find with this email & password", 401)
-    );
-  }
-  const isPasswordMatched = await user.comparePassword(password);
-
-  if (!isPasswordMatched) {
-    return next(
-      new ErrorHandler("User is not find with this email & password", 401)
-    );
-  }
-
-  sendToken(user, 201, res);
 });
 
 //  Log out user
@@ -95,16 +99,15 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     validateBeforeSave: false,
   });
 
-  const resetPasswordUrl = `${req.protocol}://${req.get(
-    "host"
-  )}/password/reset/${resetToken}`;
+  const resetPasswordUrl = `
+    http://localhost:3000/password/reset/${resetToken}`;
 
   const message = `Your password reset token is :- \n\n ${resetPasswordUrl}`;
 
   try {
     await sendMail({
       email: user.email,
-      subject: `Ecommerce Password Recovery`,
+      subject: `Karma Construction Password Recovery`,
       message,
     });
 
@@ -172,38 +175,33 @@ exports.userDetails = catchAsyncErrors(async (req, res, next) => {
 
 // Update User Password
 exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
-   
-    const user = await User.findById(req.user.id).select("+password");
+  const user = await User.findById(req.user.id).select("+password");
 
-    const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
+  const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
 
-    if (!isPasswordMatched) {
-      return next(
-        new ErrorHandler("Old Password is incorrect", 400)
-      );
-    };
+  if (!isPasswordMatched) {
+    return next(new ErrorHandler("Old Password is incorrect", 400));
+  }
 
-    if(req.body.newPassword  !== req.body.confirmPassword){
-        return next(
-            new ErrorHandler("Password not matched with each other", 400)
-          );
-    }
+  if (req.body.newPassword !== req.body.confirmPassword) {
+    return next(new ErrorHandler("Password not matched with each other", 400));
+  }
 
-    user.password = req.body.newPassword;
+  user.password = req.body.newPassword;
 
-    await user.save();
+  await user.save();
 
-    sendToken(user,200,res);
+  sendToken(user, 200, res);
 });
 
 // Update User Profile
-exports.updateProfile = catchAsyncErrors(async(req,res,next) =>{
-    const newUserData = {
-        name: req.body.name,
-        email: req.body.email,
-    };
+exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+  };
 
-   if (req.body.avatar !== "") {
+  if (req.body.avatar !== "") {
     const user = await User.findById(req.user.id);
 
     const imageId = user.avatar.public_id;
@@ -233,65 +231,129 @@ exports.updateProfile = catchAsyncErrors(async(req,res,next) =>{
 });
 
 // Get All users ---Admin
-exports.getAllUsers = catchAsyncErrors(async (req,res,next) =>{
-    const users = await User.find();
+exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
+  const users = await User.find();
 
-    res.status(200).json({
-        success: true,
-        users,
-    });
+  res.status(200).json({
+    success: true,
+    users,
+  });
 });
 
 // Get Single User Details ---Admin
-exports.getSingleUser = catchAsyncErrors(async (req,res,next) =>{
-    const user = await User.findById(req.params.id);
-   
-    if(!user){
-        return next(new ErrorHandler("User is not found with this id",400));
-    }
+exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
 
-    res.status(200).json({
-        success: true,
-        user,
-    });
+  if (!user) {
+    return next(new ErrorHandler("User is not found with this id", 400));
+  }
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
 });
 
 // Change user Role --Admin
-exports.updateUserRole = catchAsyncErrors(async(req,res,next) =>{
-    const newUserData = {
-        name: req.body.name,
-        email: req.body.email,
-        role: req.body.role,
-    };
-    const user = await User.findByIdAndUpdate(req.params.id,newUserData, {
-        new: true,
-        runValidators: true,
-        useFindAndModify: false,
-    });
+exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
+  const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
 
-    res.status(200).json({
-        success: true,
-        user
-    })
+  res.status(200).json({
+    success: true,
+    user,
+  });
 });
 
 // Delete User ---Admin
-exports.deleteUser = catchAsyncErrors(async(req,res,next) =>{
-  
-   const user = await User.findById(req.params.id);
+exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
 
-   const imageId = user.avatar.public_id;
+  const imageId = user.avatar.public_id;
 
-   await cloudinary.v2.uploader.destroy(imageId);
+  await cloudinary.v2.uploader.destroy(imageId);
 
-    if(!user){
-        return next(new ErrorHandler("User is not found with this id",400));
+  if (!user) {
+    return next(new ErrorHandler("User is not found with this id", 400));
+  }
+
+  await user.remove();
+
+  res.status(200).json({
+    success: true,
+    message: "User deleted successfully",
+  });
+});
+
+exports.createUserNote = catchAsyncErrors(async (req, res, next) => {
+  console.log("note create endpoint hit");
+  try {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
     }
 
-    await user.remove();
+    const newNote = {
+      user: req.user.id,
+      text: req.body.text,
+    };
 
-    res.status(200).json({
-        success: true,
-        message:"User deleted successfully"
-    })
+    user.notes.push(newNote);
+    await user.save();
+
+    res.status(200).json({ message: "Note added to user" });
+  } catch (err) {
+    next(err);
+  }
 });
+
+exports.getUserNotes = catchAsyncErrors(async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const notes = user.notes;
+    res.status(200).json(notes);
+  } catch (err) {
+    next(err);
+  }
+});
+
+exports.deleteUserNote = async (req, res, next) => {
+  console.log("note delete endpoint hit");
+  try {
+    const { id } = req.params;
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const noteIndex = user.notes.findIndex(
+      (note) => note._id.toString() === id.toString()
+    );
+
+    if (noteIndex === -1) {
+      return res.status(404).json({ message: "Note not found" });
+    }
+
+    user.notes.splice(noteIndex, 1);
+    await user.save();
+
+    res.status(200).json({ message: "Note deleted successfully" });
+  } catch (err) {
+    next(err);
+  }
+};

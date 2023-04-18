@@ -11,7 +11,10 @@ export default function Nav() {
     location.pathname === "/form" ||
     location.pathname === "/admin/product" ||
     location.pathname === "/calendar" ||
-    location.pathname === "/tenderForm"
+    location.pathname === "/tenderForm" ||
+    location.pathname === "/notes" ||
+    location.pathname === "/projectForm" ||
+    location.pathname === "/tender" 
   ) {
     return null;
   }
@@ -23,9 +26,9 @@ export default function Nav() {
           <div className="container-fluid">
             <div className="row mt-5">
               <div className="col-2 d-flex justify-content-center">
-                <a className="proj1" href="/">
+                <NavLink className="proj1" aria-current="page" to="/project">
                   PROJECT
-                </a>
+                </NavLink>
               </div>
               <div className="col-2 d-flex justify-content-center">
                 <NavLink className="proj1" aria-current="page" to="/about">

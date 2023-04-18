@@ -1,5 +1,6 @@
 import React from "react";
 import "./contact.css";
+//import sendMail from "../../../backend/utils/sendMail";
 
 const Contact = () => {
   return (
@@ -16,7 +17,7 @@ const Contact = () => {
                   <h1 className="serviceWe mt-5">An expert at your services</h1>
                 </div>
                 <div className="col-12 mt-5 d-flex justify-content-center">
-                  <form>
+                  <form className="contactForm">
                     <div className="mb-3">
                       <label for="exampleInputName1" className="form-label">
                         Your Name

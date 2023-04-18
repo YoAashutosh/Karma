@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, createTenderTable } from "../actions/TenderTableAction";
 import { NEW_TENDERTABLE_RESET } from "../constans/tenderTableCons";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Sidebar from "./sidebar";
 import { Button } from "@material-ui/core";
 
 const Tender = ({ history }) => {
@@ -15,14 +17,14 @@ const Tender = ({ history }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [submissionDate, setSubmissionDate] = useState("");
-  const [publishDate, setPublishDate] = useState("");
+  const [publishedDate, setPublishDate] = useState("");
   const [noticeCategory, setNoticeCategory] = useState("");
   const [industry, setIndustry] = useState("");
   const [productService, setProductService] = useState("");
   const [noOfDays, setNoOfDays] = useState("");
   const [newspaper, setNewspaper] = useState("");
-  const [images, setImages] = useState([]);
-  const [imagesPreview, setImagesPreview] = useState([]);
+  //const [images, setImages] = useState([]);
+  // const [imagesPreview, setImagesPreview] = useState([]);
 
   useEffect(() => {
     if (error) {
@@ -31,7 +33,7 @@ const Tender = ({ history }) => {
     }
 
     if (success) {
-      toast.success("TenderTable Created Successfully");
+      toast.success("Tender Table Created Successfully");
       history.push("/dashboard");
       dispatch({ type: NEW_TENDERTABLE_RESET });
     }
@@ -45,43 +47,23 @@ const Tender = ({ history }) => {
     myForm.set("name", name);
     myForm.set("description", description);
     myForm.set("submissionDate", submissionDate);
-    myForm.set("publishedDate", publishDate);
+    myForm.set("publishedDate", publishedDate);
     myForm.set("noticeCategory", noticeCategory);
     myForm.set("industry", industry);
     myForm.set("productService", productService);
     myForm.set("newspaper", newspaper);
     myForm.set("noOfDays", noOfDays);
-
-    images.forEach((image) => {
-      myForm.append("images", image);
-    });
     dispatch(createTenderTable(myForm));
-  };
-
-  const createTenderTableImagesChange = (e) => {
-    const files = Array.from(e.target.files);
-
-    setImages([]);
-    setImagesPreview([]);
-
-    files.forEach((file) => {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setImagesPreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result]);
-        }
-      };
-      reader.readAsDataURL(file);
-    });
   };
 
   return (
     <>
       <div>
-        <tender>
-          <div className="col-12 mt-5 d-flex justify-content-center">
+        <tender className="d-flex">
+          <div className="col-2">
+            <Sidebar />
+          </div>
+          <div className="col-10 mt-5 d-flex align-items-center justify-content-center mb-5">
             <form
               encType="multipart/form-data"
               onSubmit={createTenderTableSubmitHandler}
@@ -123,7 +105,7 @@ const Tender = ({ history }) => {
                     type="date"
                     id="publishedDate"
                     name="publishedDate"
-                    value={publishDate}
+                    value={publishedDate}
                     onChange={(e) => setPublishDate(e.target.value)}
                   />
                 </div>
@@ -137,7 +119,6 @@ const Tender = ({ history }) => {
                     name="LastDate"
                     value={submissionDate}
                     onChange={(e) => setSubmissionDate(e.target.value)}
-                  />
                   />
                 </div>
               </div>
@@ -207,7 +188,7 @@ const Tender = ({ history }) => {
                 />
               </div>
               <div className="mb-3">
-                <div class="row">
+                {/* <div class="row">
                   <input
                     type="file"
                     className="your form-control mb-3 mt-3"
@@ -221,16 +202,19 @@ const Tender = ({ history }) => {
                   {imagesPreview.map((image, index) => (
                     <img key={index} src={image} alt="Product Preview" />
                   ))}
-                </div>
+                </div> */}
               </div>
-              <Button
-                id="createProductBtn"
-                type="submit"
-                className="mt-4"
-                disabled={loading ? true : false}
-              >
-                Create
-              </Button>
+              <div className="d-flex justify-content-center">
+                <Button
+                  id="createProductBtn"
+                  type="submit"
+                  className="mt-4"
+                  style={{ width: "100px" }}
+                  disabled={loading ? true : false}
+                >
+                  Create
+                </Button>
+              </div>
             </form>
           </div>
         </tender>

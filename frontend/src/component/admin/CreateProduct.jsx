@@ -35,7 +35,7 @@ const CreateProduct = ({ history }) => {
 
     if (success) {
       toast.success("Product Created Successfully");
-      history.push("/dashboard");
+      history.push("/admin");
       dispatch({ type: NEW_PRODUCT_RESET });
     }
   }, [dispatch, error, history, success]);
@@ -92,8 +92,6 @@ const CreateProduct = ({ history }) => {
                 encType="multipart/form-data"
                 onSubmit={createProductSubmitHandler}
               >
-                <h1>Create Product</h1>
-
                 <div>
                   <input
                     type="text"
@@ -172,15 +170,17 @@ const CreateProduct = ({ history }) => {
                     <img key={index} src={image} alt="Product Preview" />
                   ))}
                 </div>
-
-                <Button
-                  id="createProductBtn"
-                  type="submit"
-                  className="mt-5"
-                  disabled={loading ? true : false}
-                >
-                  Create
-                </Button>
+                <div className="d-flex justify-content-center">
+                  <Button
+                    id="createProductBtn"
+                    type="submit"
+                    className="mt-5"
+                    style={{ width: "100px" }}
+                    disabled={loading ? true : false}
+                  >
+                    Create
+                  </Button>
+                </div>
               </form>
             </div>
           </div>

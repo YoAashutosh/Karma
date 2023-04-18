@@ -5,7 +5,7 @@ const tenderTableSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter a notice publisher of a tender"],
     trim: true,
-    maxLength: [200, "Product name not exceed than 20 characters"],
+    maxLength: [2000, "Product name not exceed than 2000 characters"],
   },
   description: {
     type: String,
@@ -45,18 +45,18 @@ const tenderTableSchema = new mongoose.Schema({
     required: [true, "Please provide location"],
   },
 
-  images: [
-    {
-      public_id: {
-        type: String,
-        required: true,
-      },
-      url: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
+  // images: [
+  //   {
+  //     public_id: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     url: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //   },
+  // ],
 
   user: {
     type: mongoose.Schema.ObjectId,

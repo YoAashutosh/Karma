@@ -28,6 +28,10 @@
   border: none;
   border-radius: 10px;
 }
+.learn:hover {
+  background: black;
+  color: white;
+}
 .motto2 {
   font-weight: 600;
   font-size: 36px;
@@ -44,12 +48,58 @@
   font-size: 34px;
 }
 .how_Work {
-  width: 700px;
-  height: 70vh;
+  width: 80%;
+  height: 80vh;
   border-radius: 15px 110px 15px 15px;
 }
 .left {
   border-left: 3px solid blue;
   height: 200px;
   position: absolute;
+}
+.leadership-team {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.section-title {
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.profile-card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+.profile-details {
+  text-align: center;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.role {
+  font-size: 18px;
+  font-weight: bold;
+  color: #999;
 }

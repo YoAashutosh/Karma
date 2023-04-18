@@ -43,7 +43,7 @@ const AllUsers = ({ history }) => {
     }
 
     dispatch(getAllUsers());
-  }, [dispatch, alert, error, deleteError, history, isDeleted, message]);
+  }, [dispatch, error, deleteError, history, isDeleted, message]);
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },
@@ -118,15 +118,20 @@ const AllUsers = ({ history }) => {
       <MetaData title={`ALL USERS - Admin`} />
 
       <div className="dashboard">
-        <div className="productListContainer">
-          <h1 id="productListHeading">ALL USERS</h1>
+        <div
+          className="productListContainer"
+          style={{ backgroundColor: "white", height: "80vh" }}
+        >
+          <h3 id="productListHeading" className=" text-center my-5">
+            ALL USERS
+          </h3>
 
           <DataGrid
             rows={rows}
             columns={columns}
             pageSize={10}
             disableSelectionOnClick
-            className="productListTable"
+            className="productListTable mx-5"
             autoHeight
           />
         </div>

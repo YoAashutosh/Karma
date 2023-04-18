@@ -7,7 +7,7 @@ const crypto = require("crypto");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Please your Name"],
+    required: [false, "Please your Name"],
     minlength: [3, "Please enter a name atleast 3 characters"],
     maxlength: [15, "Name can not big than 15 characters"],
   },
@@ -42,6 +42,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "user",
   },
+  notes: [
+    {
+      user: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+        required: true,
+      },
+      text: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+
   createdAt: {
     type: Date,
     default: Date.now(),

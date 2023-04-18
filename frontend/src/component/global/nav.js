@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./nav.css";
+import { useSelector } from "react-redux";
 
 export default function Nav() {
   const location = useLocation();
+  const { isAuthenticated, user } = useSelector((state) => state.user);
   if (
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
@@ -11,7 +13,9 @@ export default function Nav() {
     location.pathname === "/form" ||
     location.pathname === "/admin/product" ||
     location.pathname === "/calendar" ||
-    location.pathname === "/tenderForm"
+    location.pathname === "/tenderForm" ||
+    location.pathname === "/projectForm" ||
+    location.pathname === "/tender"
   ) {
     return null;
   }
@@ -57,18 +61,24 @@ export default function Nav() {
               <NavLink className="nav-link text-dark" to="/news">
                 News
               </NavLink>
+
               <NavLink className="nav-link text-dark" to="/contact">
                 Contact
               </NavLink>
-              <NavLink className="nav-link text-dark" to="/login">
-                Login
-              </NavLink>
-              <NavLink
-                className="signup nav-link d-flex justify-content-center align-items-center"
-                to="/signup"
-              >
-                Sign Up
-              </NavLink>
+
+              {isAuthenticated ? null : (
+                <div className="d-flex">
+                  <NavLink className="nav-link text-dark" to="/login">
+                    Login
+                  </NavLink>
+                  <NavLink
+                    className="signup nav-link d-flex justify-content-center align-items-center"
+                    to="/signup"
+                  >
+                    Sign Up
+                  </NavLink>
+                </div>
+              )}
             </ul>
           </div>
         </div>

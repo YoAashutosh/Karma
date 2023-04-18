@@ -5,29 +5,29 @@ const Features = require("../utils/Features");
 const cloudinary = require("cloudinary");
 
 exports.createTenderTable = catchAsyncErrors(async (req, res, next) => {
-  let images = [];
+  // let images = [];
 
-  if (typeof req.body.images === "string") {
-    images.push(req.body.images);
-  } else {
-    images = req.body.images;
-  }
+  // if (typeof req.body.images === "string") {
+  //   images.push(req.body.images);
+  // } else {
+  //   images = req.body.images;
+  // }
 
-  const imagesLinks = [];
+  // const imagesLinks = [];
 
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "tenders",
-    });
+  // for (let i = 0; i < images.length; i++) {
+  //   const result = await cloudinary.v2.uploader.upload(images[i], {
+  //     folder: "tenders",
+  //   });
 
-    imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
-    });
-  }
+  //   imagesLinks.push({
+  //     public_id: result.public_id,
+  //     url: result.secure_url,
+  //   });
+  // }
 
-  req.body.images = imagesLinks;
-  req.body.user = req.user.id;
+  // req.body.images = imagesLinks;
+  // req.body.user = req.user.id;
 
   const tender = await TenderTable.create(req.body);
 

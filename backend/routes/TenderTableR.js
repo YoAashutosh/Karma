@@ -14,7 +14,7 @@ router.route("/tendertables").get(getAllTenderTables);
 
 router
   .route("/admin/tendertables")
-  .get(isAuthenticatedUser, authorizeRoles("admin"), getAdminTenderTables);
+  .get(isAuthenticatedUser, getAdminTenderTables);
 
 router
   .route("/tendertable/new")
