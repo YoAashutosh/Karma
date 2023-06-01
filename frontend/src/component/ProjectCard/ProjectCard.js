@@ -15,7 +15,10 @@ const ProjectCard = ({ project }) => {
           style={{ borderRadius: "20px 20px 0 0", width: "400px" }}
         />
 
-        <p className="productName ms-3" style={{ fontSize: "22px" }}>
+        <p
+          className="productName ms-3"
+          style={{ fontSize: "22px", fontWeight: "600" }}
+        >
           {project.name}
         </p>
 
@@ -27,13 +30,17 @@ const ProjectCard = ({ project }) => {
                 paddingLeft: "17vmax",
                 fontSize: ".7vmax",
                 paddingBottom: "0",
+                fontWeight: "500",
               }}
             >
               {project.description}
             </span>
           </div>
           <div className="offerPriceBox mt-4 mb-4">
-            <span className="p_Price text-end ms-5 me-2">
+            <span
+              className="p_Price text-end ms-5 me-2"
+              style={{ fontWeight: "600" }}
+            >
               {project.location}
             </span>
           </div>

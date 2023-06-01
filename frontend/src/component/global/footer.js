@@ -14,7 +14,7 @@ export default function Nav() {
     location.pathname === "/tenderForm" ||
     location.pathname === "/notes" ||
     location.pathname === "/projectForm" ||
-    location.pathname === "/tender" 
+    location.pathname === "/tender"
   ) {
     return null;
   }
@@ -22,7 +22,12 @@ export default function Nav() {
   return (
     <>
       <div>
-        <footer>
+        <footer
+          style={{
+            bottom: 0,
+            position: "bottom",
+          }}
+        >
           <div className="container-fluid">
             <div className="row mt-5">
               <div className="col-2 d-flex justify-content-center">

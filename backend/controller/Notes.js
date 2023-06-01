@@ -3,7 +3,6 @@
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 // // noteController.js
 
-
 const notes = [];
 
 exports.getNotes = catchAsyncErrors(async (req, res) => {
@@ -19,14 +18,14 @@ exports.createNote = catchAsyncErrors(async (req, res) => {
   res.json(newNote);
 });
 
-exports.updateNote = catchAsyncErrors(async (req, res) => {
-  const note = notes.find((note) => note.id === req.params.id);
-  if (!note) {
-    return res.status(404).json({ error: "Note not found" });
-  }
-  note.text = req.body.text;
-  res.json(note);
-});
+// exports.updateNote = catchAsyncErrors(async (req, res) => {
+//   const note = notes.find((note) => note.id === req.params.id);
+//   if (!note) {
+//     return res.status(404).json({ error: "Note not found" });
+//   }
+//   note.text = req.body.text;
+//   res.json(note);
+// });
 
 exports.deleteNote = catchAsyncErrors(async (req, res) => {
   const noteIndex = notes.findIndex((note) => note.id === req.params.id);

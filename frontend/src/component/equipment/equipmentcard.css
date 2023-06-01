@@ -11,11 +11,20 @@
 
 .productCard1 {
   width: 400px;
-  background-color: rgb(255, 251, 238);
+  background-color: rgb(255, 255, 255);
   border-radius: 20px;
   text-decoration: none;
   color: black;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.tenderCard {
+  width: 450px;
+  background-color: rgb(252, 252, 251);
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: translateX(19px);
 }
 .luxury1 {
   font-weight: 600;

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./newProduct.css";
 import { useDispatch } from "react-redux";
-import Sidebar from "../sidebar";
+import Sidebar from "./sidebar";
 import { clearErrors, createProduct } from "../../actions/ProductActions";
 import { Button } from "@material-ui/core";
 import MetaData from "../../more/Metadata";

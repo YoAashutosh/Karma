@@ -1,5 +1,5 @@
 import React from "react";
-import "../project.css";
+import "../ProjectCard/project.css";
 import "./equipmentcard.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";

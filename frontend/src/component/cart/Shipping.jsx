@@ -3,9 +3,6 @@ import "./Shipping.css";
 import { useSelector, useDispatch } from "react-redux";
 import CheckoutSteps from "../cart/CheckoutSteps.jsx";
 import MetaData from "../../more/Metadata";
-import HomeIcon from "@material-ui/icons/Home";
-import PublicIcon from "@material-ui/icons/Public";
-import PhoneIcon from "@material-ui/icons/Phone";
 import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
 import { Country, State } from "country-state-city";
 import { saveShippingInfo } from "../../actions/CartAction";
@@ -42,16 +39,16 @@ const Shipping = ({ history }) => {
       <CheckoutSteps activeStep={0} />
 
       <div className="shippingContainer">
-        <div className="shippingBox">
+        <div className="cardProfile">
           <h2 className="shippingHeading">Shipping Details</h2>
 
           <form
+            style={{ border: "none" }}
             className="shippingForm"
             encType="multipart/form-data"
             onSubmit={shippingSubmit}
           >
             <div>
-              <HomeIcon />
               <input
                 type="text"
                 placeholder="Address"
@@ -62,7 +59,6 @@ const Shipping = ({ history }) => {
             </div>
 
             <div>
-              <PhoneIcon />
               <input
                 type="number"
                 placeholder="Phone Number"
@@ -74,8 +70,6 @@ const Shipping = ({ history }) => {
             </div>
 
             <div>
-              <PublicIcon />
-
               <select
                 required
                 value={country}

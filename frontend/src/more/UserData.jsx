@@ -8,6 +8,8 @@ import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import NotesIcon from "@mui/icons-material/Notes";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import HomeIcon from "@material-ui/icons/Home";
 import { useDispatch } from "react-redux";
@@ -33,6 +35,8 @@ const UserData = ({ user }) => {
     { icon: <PersonIcon />, name: "Profile", func: account },
     { icon: <CalendarMonthIcon />, name: "Calendar", func: calendar },
     { icon: <NotesIcon />, name: "Notes", func: report },
+    { icon: <AddShoppingCartIcon />, name: "Cart", func: cart },
+    { icon: <AddCircleIcon />, name: "Professional", func: addprof },
     { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
   ];
 
@@ -79,7 +83,15 @@ const UserData = ({ user }) => {
   }
 
   function news() {
-    history.push("/tenderForm");
+    history.push("/tender");
+  }
+
+  function cart() {
+    history.push("/cart");
+  }
+
+  function addprof() {
+    history.push("/hiringForm");
   }
 
   function logoutUser() {
@@ -98,7 +110,17 @@ const UserData = ({ user }) => {
           onOpen={() => setOpen(true)}
           direction="down"
           className="speedDial"
-          icon={<PersonIcon />}
+          // icon={<PersonIcon />}
+          icon={
+            <img
+              className="speedDialIcon"
+              src={user.avatar.url ? user.avatar.url : "/profile.png"}
+              alt="Profile"
+              style={{
+                position: "relative",
+              }}
+            />
+          }
           open={open}
         >
           {options.map((item) => (

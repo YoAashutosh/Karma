@@ -120,12 +120,12 @@ exports.deleteTenderTable = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("TenderTable is not found with this id", 404));
   }
 
-  // Deleting images from cloudinary
-  for (let i = 0; 1 < tender.images.length; i++) {
-    const result = await cloudinary.v2.uploader.destroy(
-      tender.images[i].public_id
-    );
-  }
+  // // Deleting images from cloudinary
+  // for (let i = 0; 1 < tender.images.length; i++) {
+  //   const result = await cloudinary.v2.uploader.destroy(
+  //     tender.images[i].public_id
+  //   );
+  // }
 
   await tender.remove();
 

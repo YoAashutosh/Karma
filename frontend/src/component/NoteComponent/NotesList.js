@@ -66,6 +66,7 @@ function NoteList() {
             </button>
           </div>
         </Link>
+        <div style={{ minHeight: "30vh" }}></div>
       </div>
     </>
   );

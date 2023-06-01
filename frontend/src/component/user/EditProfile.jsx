@@ -16,7 +16,7 @@ const EditProfile = ({ history }) => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [avatar, setAvatar] = useState();
+  const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState("/profile.png");
 
   const updateProfileSubmit = (e) => {
@@ -59,9 +59,7 @@ const EditProfile = ({ history }) => {
     if (isUpdated) {
       toast.success("Profile updated successfully");
       dispatch(loadUser());
-
       history.push("/me");
-
       dispatch({
         type: UPDATE_PROFILE_RESET,
       });

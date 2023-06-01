@@ -38,7 +38,7 @@ const AllUsers = ({ history }) => {
 
     if (isDeleted) {
       toast.success(message);
-      history.push("/admin/users");
+      history.push("/admin/allusers");
       dispatch({ type: DELETE_USER_RESET });
     }
 

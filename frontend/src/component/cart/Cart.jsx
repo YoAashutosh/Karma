@@ -48,7 +48,7 @@ const Cart = ({ history }) => {
   return (
     <>
       {cartItems.length === 0 ? (
-        <div className="emptyCart">
+        <div className="emptyCart" style={{ minHeight: "70vh" }}>
           <RemoveShoppingCartIcon />
           <Typography>No Items In Cart</Typography>
           <Link to="/equipment">View Products</Link>

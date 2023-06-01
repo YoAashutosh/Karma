@@ -26,6 +26,18 @@ const EquipmentCard = ({ product }) => {
               {product.offerPrice > 0 ? `$${product.offerPrice}` : ""}
             </h1>
             <span className="p__Price ms-3">{`$${product.price}`}</span>
+            <span
+              className="p_Stock ms-3"
+              style={{ paddingLeft: "100px" }}
+            >{`Stock: ${product.Stock}`}</span>
+            <div className="d-flex ">
+              <span
+                className="p_Category mt-3 ms-3"
+                style={{ fontSize: "16px", fontWeight: "500" }}
+              >
+                {product.category}
+              </span>
+            </div>
           </div>
         </div>
       </Link>
